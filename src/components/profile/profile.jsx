@@ -1,35 +1,24 @@
 import React from 'react';
+import s from './profile.module.css';
+import ProfileInfo from './profile-info/profile-info.jsx';
+import Posts from './posts/posts.jsx';
 
-function Profile() {
+const profileInfo = {
+	username: 'Vasiliy',
+	date: '20/11/89',
+	city: 'Moscow',
+	edu: 'MSMU',
+	mail: 'cartario@yandex.ru',
+};
+
+function Profile() {	
 	return (
-				<section className="profile">
-			<div>
-				<img className="profile-bg" src = "https://avatars.mds.yandex.net/get-pdb/1356247/63ee5ae6-2520-4006-9f10-cacb5f702ea8/s1200?webp=false" />
-			</div>
-			<div className="profile-info">
-				<img className="profile-avatar" src="https://c7.hotpng.com/preview/556/742/534/avatar-youtube-8-ball-pool-user-avatar.jpg" />
+			<section className={s.profile}>
 				<div>
-					Description
+					<img className={s.profile_bg} src = "https://avatars.mds.yandex.net/get-pdb/1356247/63ee5ae6-2520-4006-9f10-cacb5f702ea8/s1200?webp=false" alt='profileBg'/>
 				</div>
-			</div>
-			<div className = "my-posts">
-				My posts
-				<div>
-					new post
-				</div>
-				<article>
-					Post-1
-				</article>
-				<article>
-					Post-2
-				</article>
-				<article>
-					Post-3
-				</article>
-				<article>
-					Post-4
-				</article>
-			</div>			
+				<ProfileInfo {...profileInfo}/>
+				<Posts />			
 			</section>
 	);
 }

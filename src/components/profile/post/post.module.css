@@ -1,0 +1,21 @@
+.post {
+	width: 50%;
+	min-height: 100px;
+	margin: 15px 5px 5px 15px;
+	padding: 5px 25px 5px 25px;	
+	border-radius: 15px;
+	color: green;
+	background-color: #e0b0c0;
+}
+
+.postAvatar {
+	margin: 10px 0 0 0; 
+	width: 50px;
+	border-radius: 50%;
+}
+
+.message {	
+	padding: 5px;
+	background-color: white;
+	border-radius: 5px;
+}

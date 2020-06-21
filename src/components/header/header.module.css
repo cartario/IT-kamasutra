@@ -1,0 +1,7 @@
+.header {
+	background-color: #78BE00;
+	grid-area: header;
+	padding: 20px;
+	text-align: center;
+	border-radius: 15px;
+}

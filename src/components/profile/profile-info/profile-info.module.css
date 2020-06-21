@@ -1,0 +1,27 @@
+.container_info {
+	display: flex;
+	width: 90%;
+	height: 150px;
+	margin: 5px 0 5px 5px;	
+	border-radius: 15px;
+	background-color: #e5e5e5;
+}
+
+.profile_avatar {
+	margin: auto 10px ;
+	width: 75px;
+	height: 75px;
+	border-radius: 15px;
+}
+
+.description {
+	
+}
+
+.name {
+	margin:  5px 0 5px 5px;
+}
+
+.item_description {
+	margin: 0 0 0 10px;
+}
