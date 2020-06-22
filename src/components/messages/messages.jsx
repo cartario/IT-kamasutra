@@ -4,7 +4,8 @@ import s from './messages.module.css';
 function Messages(){
 	return (		
 		<div className={s.container}>
-			<h1>Messages</h1>
+			<h1>MessagesYo</h1>
+			hey
 		</div>	
 	);
 }
