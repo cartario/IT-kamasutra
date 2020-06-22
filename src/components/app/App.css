@@ -2,7 +2,7 @@
   display: grid;
 	grid-template-areas: 
 		"header header"
-		"nav profile";
+		"nav container";
 		
 	grid-template-rows: 60px 10fr;
 	grid-template-columns: 2fr 10fr;
@@ -12,6 +12,9 @@
 	margin: 0 auto;
 }
 
+.app-content-wrapper {
+	grid-area: container;	
+}
 
 
 
