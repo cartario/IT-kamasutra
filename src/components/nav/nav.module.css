@@ -18,5 +18,12 @@
 
 .link {
 	color: white;
-	
+	text-decoration: none;
+}
+
+.active {
+	padding: 5px 25px 5px 25px;
+	color: gold;
+	font-weight: bold;
+	background-color: grey;
 }
