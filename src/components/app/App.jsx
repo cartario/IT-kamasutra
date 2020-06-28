@@ -9,15 +9,17 @@ import Music from '../music/music.jsx';
 import News from '../news/news.jsx';
 import Settings from '../settings/settings.jsx';
 
-function App() {
+function App(props) {
+	const {state, addPost, addMessage, updateMessage} = props;
+
   return (
 		<BrowserRouter>
 			<div className="app-wrapper">
 				<Header />
-				<Nav />
+				<Nav sidebar={state.sidebar}/>
 				<div className="app-content-wrapper">
-					<Route path='/profile' component={Profile}/>
-					<Route path='/messages' component={Messages}/>
+					<Route path='/profile' render={()=> <Profile profilePageState = {state.profilePage} addPost={addPost}/>}/>
+					<Route path='/messages' render={() => <Messages messagesPageState = {state.messagesPage} addMessage={addMessage} updateMessage={updateMessage}/>}/>
 					<Route path='/music' component={Music}/>
 					<Route path='/news' component={News}/>
 					<Route path='/settings' component={Settings}/>

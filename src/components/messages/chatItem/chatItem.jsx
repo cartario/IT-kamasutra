@@ -1,8 +1,9 @@
 import React from 'react';
+import s from './chatItem.module.css';
 
 const ChatItem = (props) => {
 	return (
-		<li className='chatItem'>{props.message}</li>
+		<li className={s.item}>{props.message}</li>
 	);
 };
 
