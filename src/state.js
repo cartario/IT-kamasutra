@@ -1,4 +1,6 @@
-import {renderEntireTree} from './render.js';
+let renderEntireTree = () => {
+  
+}
 
 const state = {
 
@@ -11,15 +13,18 @@ const state = {
     ],
       dataUsers: [
         {name: `Vasil`,	id: 1, src: 'https://i09.fotocdn.net/s114/db3e293bd3710194/user_xl/2581623082.jpg',}, 
-        {name: `Masha`,	id: 2, src: 'https://image.pushauction.com/0/0/969ad60e-3302-471a-ab56-33db1d608fdd/224b8e7f-d3da-4555-a432-5f1cca7f7ac7.jpg',}, 
+        {name: `Masha`,	id: 2, src: 'https://avatars.yandex.net/get-music-user-playlist/27701/265236767.1000.16809/m1000x1000?1498108273588&webp=false',}, 
         {name: `Dasha`,	id: 3, src: 'https://i.pinimg.com/originals/62/62/16/6262165c2ab45566f5f3cf244fa94853.jpg',}, 
         {name: `Sasha`,	id: 4, src: 'https://i02.fotocdn.net/s108/aacb1d92b4e78239/user_xl/2394143015.jpg',}
       ],
 
-      newMessageText: 'default',
+      newMessageText: '',
   },
 
   profilePage: {
+
+    newPostMessage: '',
+
     profileInfo : {
       username: 'Vasiliy',
       date: '20/11/89',
@@ -62,15 +67,15 @@ const state = {
   },
 };
 
-export const addPost = (post) => {
-  
+export const addPost = () => {  
   const user = {
     src: 'https://i09.fotocdn.net/s114/db3e293bd3710194/user_xl/2581623082.jpg',
-    message: state.messagesPage.newPostText,
+    message: state.profilePage.newPostMessage,
     likes: 5,
   }
   state.profilePage.users.push(user);
-  renderEntireTree(state, addPost, addMessage, updateMessage);
+  state.profilePage.newPostMessage = ``;
+  renderEntireTree();
 }
 
 export const addMessage = () => {
@@ -81,12 +86,21 @@ export const addMessage = () => {
 
   state.messagesPage.dataMessages.push(dataMes);
   state.messagesPage.newMessageText = '';
-  renderEntireTree(state, addPost, addMessage, updateMessage);  
+  renderEntireTree();  
 };
 
 export const updateMessage = (newText) => {
   state.messagesPage.newMessageText = newText;
-  renderEntireTree(state, addPost, addMessage, updateMessage);
+  renderEntireTree();
+}
+
+export const updateNewPost = (newText) => {    
+  state.profilePage.newPostMessage = newText;
+  renderEntireTree();
+}
+
+export const subscribe = (observer) => {
+  renderEntireTree = observer;
 }
 
 window.state = state;

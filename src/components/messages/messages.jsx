@@ -15,7 +15,7 @@ function Messages(props){
 
 	const addMessageLocal = () => {		
 		addMessage();
-		inputRef.current.value=``;
+		// inputRef.current.value=``;
 	};
 
 	return (		
@@ -35,7 +35,7 @@ function Messages(props){
 					</ul>
 
 					<div className={s.newMessage}>
-						<textarea onChange= {changeHandler} className={s.input_newMessage} placeholder='text message' ref={inputRef} value={messagesPageState.newPostText}></textarea>
+						<textarea onChange= {changeHandler} className={s.input_newMessage} placeholder='text message' ref={inputRef} value={messagesPageState.newMessageText}></textarea>
 						<button onClick={addMessageLocal} className={s.btn}>NEW MESSAGE</button>
 					</div>
 
