@@ -10,7 +10,7 @@ import News from '../news/news.jsx';
 import Settings from '../settings/settings.jsx';
 
 function App(props) {
-	const {state} = props;
+	const {state, addMessage, updateMessage, addPost, updateNewPost} = props;
 
   return (
 		<BrowserRouter>
@@ -18,8 +18,8 @@ function App(props) {
 				<Header />
 				<Nav sidebar={state.sidebar}/>
 				<div className="app-content-wrapper">
-					<Route path='/profile' render={()=> <Profile profilePageState = {state.profilePage} addPost={state.addPost} updateNewPost={state.updateNewPost}/>}/>
-					<Route path='/messages' render={() => <Messages messagesPageState = {state.messagesPage} addMessage={state.addMessage} updateMessage={state.updateMessage}/>}/>
+					<Route path='/profile' render={()=> <Profile profilePageState = {state.profilePage} addPost={addPost} updateNewPost={updateNewPost}/>}/>
+					<Route path='/messages' render={() => <Messages messagesPageState = {state.messagesPage} addMessage={addMessage} updateMessage={updateMessage}/>}/>
 					<Route path='/music' component={Music}/>
 					<Route path='/news' component={News}/>
 					<Route path='/settings' component={Settings}/>
