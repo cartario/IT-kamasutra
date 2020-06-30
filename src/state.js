@@ -65,43 +65,45 @@ const state = {
       `Andrew`, `Sveta`, `Vital`, 
     ],    
   },
+
+  addMessage() {
+    const dataMes = {
+      id: 0,
+      message: state.messagesPage.newMessageText,
+    }
+  
+    state.messagesPage.dataMessages.push(dataMes);
+    state.messagesPage.newMessageText = '';
+    renderEntireTree();  
+  },
+
+  updateMessage(newText) {
+    state.messagesPage.newMessageText = newText;
+    renderEntireTree();
+  },
+
+  addPost() {  
+    const user = {
+      src: 'https://i09.fotocdn.net/s114/db3e293bd3710194/user_xl/2581623082.jpg',
+      message: state.profilePage.newPostMessage,
+      likes: 5,
+    }
+    state.profilePage.users.push(user);
+    state.profilePage.newPostMessage = ``;
+    renderEntireTree();
+  },
+
+  updateNewPost(newText) {    
+    state.profilePage.newPostMessage = newText;
+    renderEntireTree();
+  },
+
+  subscribe(observer) {  
+    renderEntireTree = observer;
+  }
+
 };
 
-export const addPost = () => {  
-  const user = {
-    src: 'https://i09.fotocdn.net/s114/db3e293bd3710194/user_xl/2581623082.jpg',
-    message: state.profilePage.newPostMessage,
-    likes: 5,
-  }
-  state.profilePage.users.push(user);
-  state.profilePage.newPostMessage = ``;
-  renderEntireTree();
-}
-
-export const addMessage = () => {
-  const dataMes = {
-    id: 0,
-    message: state.messagesPage.newMessageText,
-  }
-
-  state.messagesPage.dataMessages.push(dataMes);
-  state.messagesPage.newMessageText = '';
-  renderEntireTree();  
-};
-
-export const updateMessage = (newText) => {
-  state.messagesPage.newMessageText = newText;
-  renderEntireTree();
-}
-
-export const updateNewPost = (newText) => {    
-  state.profilePage.newPostMessage = newText;
-  renderEntireTree();
-}
-
-export const subscribe = (observer) => {
-  renderEntireTree = observer;
-}
 
 window.state = state;
 export default state;
