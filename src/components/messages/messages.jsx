@@ -16,13 +16,14 @@ function Messages(props){
 	const addMessageLocal = () => {		
 		dispatch(addMessageAC());
 	};
-
+	
 	return (		
 		<div className={s.container}>
 			<h1 className={s.title}>Dialogs</h1>
 			<div className={s.wrapper}>		
 				<div className={s.item} >
 				<h2 className={s.titleUsers}>Users</h2>
+				
 					<ul className={s.list}>
 						{messagesPageState.dataUsers.map((user)=> <DialogItem src={user.src} name={user.name} id={user.id} key={user.name}/>)}						
 					</ul>				

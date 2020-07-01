@@ -3,7 +3,15 @@ export const clickFriendAC = (name) => {
   return {type: 'CLICK', checked: name};
 }
 
-export const sidebarReducer = (state, action) => {
+const initialState = {
+  friends: [
+    {name: `Andrew`, checked: true},
+    {name: `Sveta`, checked: true},
+    {name: `Vital`, checked: true}, 
+  ],  
+};
+
+export const sidebarReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case 'CLICK':

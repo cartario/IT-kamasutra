@@ -3,8 +3,6 @@ import s from './sidebar.module.css';
 import {NavLink} from 'react-router-dom';
 import {clickFriendAC} from '../../reducers/sidebar-reducer.js';
 
-
-
 const Sidebar = (props) => {
   const {friends, dispatch} = props; 
 

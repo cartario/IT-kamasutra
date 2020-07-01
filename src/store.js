@@ -1,6 +1,6 @@
-import {messageReducer} from './reducers/message-reducer.js';
-import {profileReducer} from './reducers/profile-reducer.js';
-import {sidebarReducer} from './reducers/sidebar-reducer.js';
+// import {messageReducer} from './reducers/message-reducer.js';
+// import {profileReducer} from './reducers/profile-reducer.js';
+// import {sidebarReducer} from './reducers/sidebar-reducer.js';
 
 let store = {
   
@@ -96,4 +96,4 @@ let store = {
 
 window.store = store;
 window.q =  store.getState().sidebar.friends;
-export default store;
+// export default store;
