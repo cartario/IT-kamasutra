@@ -1,25 +1,6 @@
-const Constants = {
-  ADD_POST: 'ADD_POST',
-  UPDATE_POST: 'UPDATE_POST',
-  ADD_MESSAGE: 'ADD_MESSAGE',
-  UPDATE_MESSAGE: 'UPDATE_MESSAGE',
-};
-
-export const addMessageAC = () => {
-	return {type: Constants.ADD_MESSAGE};
-};
-
-export const updateMessageAC = (newText) => {
-  return {type: Constants.UPDATE_MESSAGE, newText: newText}
-};
-
-export const addPostAC = () => {
-  return {type: Constants.ADD_POST}
-}
-
-export const updatePostAC = (newText) => {
-  return {type: Constants.UPDATE_POST, newText: newText}
-}
+import {messageReducer} from './reducers/message-reducer.js';
+import {profileReducer} from './reducers/profile-reducer.js';
+import {sidebarReducer} from './reducers/sidebar-reducer.js';
 
 let store = {
   
@@ -83,7 +64,9 @@ let store = {
 
     sidebar: {
       friends: [
-        `Andrew`, `Sveta`, `Vital`, 
+        {name: `Andrew`, checked: true},
+        {name: `Sveta`, checked: true},
+        {name: `Vital`, checked: true}, 
       ],    
     },  
 
@@ -102,39 +85,15 @@ let store = {
   },
 
   dispatch(action) {
-    switch (action.type) {      
-      case Constants.ADD_POST:
-        const user = {
-          src: 'https://i09.fotocdn.net/s114/db3e293bd3710194/user_xl/2581623082.jpg',
-          message: this._state.profilePage.newPostMessage,
-          likes: 5,
-        }
-        this._state.profilePage.users.push(user);
-        this._state.profilePage.newPostMessage = ``;
-        this._callSubscriber();
-        break;
-      case Constants.UPDATE_POST:
-        this._state.profilePage.newPostMessage = action.newText;
-        this._callSubscriber();
-        break;
-      case Constants.ADD_MESSAGE:
-        const dataMes = {
-          id: 0,
-          message: this._state.messagesPage.newMessageText,
-        };      
-        this._state.messagesPage.dataMessages.push(dataMes);
-        this._state.messagesPage.newMessageText = '';
-        this._callSubscriber(); 
-        break;
-      case Constants.UPDATE_MESSAGE:
-        this._state.messagesPage.newMessageText = action.newText;
-        this._callSubscriber();
-        break;
-      default :
-        console.log(`default`) 
-    }
+
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.messagesPage = messageReducer(this._state.messagesPage, action);
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+    this._callSubscriber();
+
   }
 }
 
 window.store = store;
+window.q =  store.getState().sidebar.friends;
 export default store;

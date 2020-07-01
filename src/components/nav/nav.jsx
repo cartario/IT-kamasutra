@@ -6,7 +6,7 @@ import Sidebar from '../sidebar/sidebar.jsx';
 
 const Nav = (props) => {
 
-	const {sidebar} = props;
+	const {sidebar, dispatch} = props;
 	return (
 		<nav className={s.nav}>
 			<ul className = {s.list}>
@@ -26,7 +26,7 @@ const Nav = (props) => {
 					<NavLink to ="/settings" className = {s.link} activeClassName = {s.active}>Settings</NavLink>
 				</li>
 			</ul>
-			<Sidebar friends={sidebar.friends}/>			
+			<Sidebar friends={sidebar.friends} dispatch={dispatch}/>			
 		</nav>
 	);
 }

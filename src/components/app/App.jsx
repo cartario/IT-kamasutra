@@ -16,7 +16,7 @@ function App(props) {
 		<BrowserRouter>
 			<div className="app-wrapper">
 				<Header />
-				<Nav sidebar={state.sidebar}/>
+				<Nav sidebar={state.sidebar} dispatch={dispatch}/>
 				<div className="app-content-wrapper">
 					<Route path='/profile' render={()=> <Profile profilePageState = {state.profilePage} dispatch={dispatch}/>}/>
 					<Route path='/messages' render={() => <Messages messagesPageState = {state.messagesPage}  dispatch={dispatch}/>}/>

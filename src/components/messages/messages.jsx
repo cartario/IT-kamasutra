@@ -2,7 +2,7 @@ import React from 'react';
 import s from './messages.module.css';
 import DialogItem from './dialogItem/dialogItem.jsx';
 import ChatItem from './chatItem/chatItem.jsx';
-import {addMessageAC, updateMessageAC} from '../../store.js';
+import {addMessageAC, updateMessageAC} from '../../reducers/message-reducer.js';
 
 function Messages(props){
 	const {messagesPageState, dispatch} = props;

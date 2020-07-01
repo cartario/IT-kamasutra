@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './new-post.module.css';
-import {addPostAC, updatePostAC} from '../../../../store.js';
+import {addPostAC, updatePostAC} from '../../../../reducers/profile-reducer.js';
 
 
 const NewPost =(props)=> {
 
-	const {profilePageState, dispatch, updateNewPost} = props;
+	const {profilePageState, dispatch} = props;
 	const inputRef = React.createRef();
 
 	const addPostLocal = () => {		
