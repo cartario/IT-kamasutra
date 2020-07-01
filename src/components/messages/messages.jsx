@@ -2,19 +2,19 @@ import React from 'react';
 import s from './messages.module.css';
 import DialogItem from './dialogItem/dialogItem.jsx';
 import ChatItem from './chatItem/chatItem.jsx';
-// import NewPost from '../profile/posts/new-post/new-post.jsx';
+import {addMessageAC, updateMessageAC} from '../../store.js';
 
 function Messages(props){
 	const {messagesPageState, dispatch} = props;
 
 	const inputRef = React.createRef();	
 
-	const changeHandler = () => {
-		dispatch({type: `UPDATE_MESSAGE`, newText: inputRef.current.value});
+	const changeHandler = (e) => {
+		dispatch(updateMessageAC(e.target.value));
 	}
 
 	const addMessageLocal = () => {		
-		dispatch({type: `ADD_MESSAGE`});
+		dispatch(addMessageAC());
 	};
 
 	return (		

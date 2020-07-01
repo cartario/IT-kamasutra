@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './new-post.module.css';
-
+import {addPostAC, updatePostAC} from '../../../../store.js';
 
 
 const NewPost =(props)=> {
@@ -9,11 +9,11 @@ const NewPost =(props)=> {
 	const inputRef = React.createRef();
 
 	const addPostLocal = () => {		
-		dispatch({type:`ADD_POST`});		
+		dispatch(addPostAC());		
 	}
 
 	const handlerNewPost = () => {
-		dispatch({type: `UPDATE_POST`, newText: inputRef.current.value});
+		dispatch(updatePostAC(inputRef.current.value));
 	}
 
 	return (

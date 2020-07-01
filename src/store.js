@@ -1,3 +1,26 @@
+const Constants = {
+  ADD_POST: 'ADD_POST',
+  UPDATE_POST: 'UPDATE_POST',
+  ADD_MESSAGE: 'ADD_MESSAGE',
+  UPDATE_MESSAGE: 'UPDATE_MESSAGE',
+};
+
+export const addMessageAC = () => {
+	return {type: Constants.ADD_MESSAGE};
+};
+
+export const updateMessageAC = (newText) => {
+  return {type: Constants.UPDATE_MESSAGE, newText: newText}
+};
+
+export const addPostAC = () => {
+  return {type: Constants.ADD_POST}
+}
+
+export const updatePostAC = (newText) => {
+  return {type: Constants.UPDATE_POST, newText: newText}
+}
+
 let store = {
   
   _state:{
@@ -80,7 +103,7 @@ let store = {
 
   dispatch(action) {
     switch (action.type) {      
-      case 'ADD_POST':
+      case Constants.ADD_POST:
         const user = {
           src: 'https://i09.fotocdn.net/s114/db3e293bd3710194/user_xl/2581623082.jpg',
           message: this._state.profilePage.newPostMessage,
@@ -90,11 +113,11 @@ let store = {
         this._state.profilePage.newPostMessage = ``;
         this._callSubscriber();
         break;
-      case 'UPDATE_POST':
+      case Constants.UPDATE_POST:
         this._state.profilePage.newPostMessage = action.newText;
         this._callSubscriber();
         break;
-      case `ADD_MESSAGE`:
+      case Constants.ADD_MESSAGE:
         const dataMes = {
           id: 0,
           message: this._state.messagesPage.newMessageText,
@@ -103,7 +126,7 @@ let store = {
         this._state.messagesPage.newMessageText = '';
         this._callSubscriber(); 
         break;
-      case `UPDATE_MESSAGE`:
+      case Constants.UPDATE_MESSAGE:
         this._state.messagesPage.newMessageText = action.newText;
         this._callSubscriber();
         break;
