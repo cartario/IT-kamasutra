@@ -5,15 +5,15 @@ import s from './new-post.module.css';
 
 const NewPost =(props)=> {
 
-	const {profilePageState, addPost, updateNewPost} = props;
+	const {profilePageState, dispatch, updateNewPost} = props;
 	const inputRef = React.createRef();
 
 	const addPostLocal = () => {		
-		addPost();		
+		dispatch({type:`ADD_POST`});		
 	}
 
 	const handlerNewPost = () => {
-		updateNewPost(inputRef.current.value);
+		dispatch({type: `UPDATE_POST`, newText: inputRef.current.value});
 	}
 
 	return (

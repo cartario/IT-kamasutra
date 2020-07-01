@@ -5,17 +5,16 @@ import ChatItem from './chatItem/chatItem.jsx';
 // import NewPost from '../profile/posts/new-post/new-post.jsx';
 
 function Messages(props){
-	const {messagesPageState, addMessage, updateMessage} = props;
+	const {messagesPageState, dispatch} = props;
 
 	const inputRef = React.createRef();	
 
 	const changeHandler = () => {
-		updateMessage(inputRef.current.value);
+		dispatch({type: `UPDATE_MESSAGE`, newText: inputRef.current.value});
 	}
 
 	const addMessageLocal = () => {		
-		addMessage();
-		// inputRef.current.value=``;
+		dispatch({type: `ADD_MESSAGE`});
 	};
 
 	return (		

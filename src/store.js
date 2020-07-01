@@ -66,52 +66,52 @@ let store = {
 
   },
 
+  _callSubscriber () {
+    console.log(`hey`);
+  },
+
   getState(){
     return this._state;
-  },
-
-  addMessage() {
-    const dataMes = {
-      id: 0,
-      message: this._state.messagesPage.newMessageText,
-    };
-  
-    this._state.messagesPage.dataMessages.push(dataMes);
-    this._state.messagesPage.newMessageText = '';
-    this._callSubscriber();  
-  },
-
-  updateMessage(newText) {
-    this._state.messagesPage.newMessageText = newText;
-    this._callSubscriber();
-  },
-
-  addPost() {  
-    const user = {
-      src: 'https://i09.fotocdn.net/s114/db3e293bd3710194/user_xl/2581623082.jpg',
-      message: this._state.profilePage.newPostMessage,
-      likes: 5,
-    }
-    this._state.profilePage.users.push(user);
-    this._state.profilePage.newPostMessage = ``;
-    this._callSubscriber();
-  },
-
-  updateNewPost(newText) {    
-    this._state.profilePage.newPostMessage = newText;
-    this._callSubscriber();
   },
 
   subscribe(observer) {  
     this._callSubscriber = observer;
   },
 
-  _callSubscriber () {
-    console.log(`hey`);
-  },
-
+  dispatch(action) {
+    switch (action.type) {      
+      case 'ADD_POST':
+        const user = {
+          src: 'https://i09.fotocdn.net/s114/db3e293bd3710194/user_xl/2581623082.jpg',
+          message: this._state.profilePage.newPostMessage,
+          likes: 5,
+        }
+        this._state.profilePage.users.push(user);
+        this._state.profilePage.newPostMessage = ``;
+        this._callSubscriber();
+        break;
+      case 'UPDATE_POST':
+        this._state.profilePage.newPostMessage = action.newText;
+        this._callSubscriber();
+        break;
+      case `ADD_MESSAGE`:
+        const dataMes = {
+          id: 0,
+          message: this._state.messagesPage.newMessageText,
+        };      
+        this._state.messagesPage.dataMessages.push(dataMes);
+        this._state.messagesPage.newMessageText = '';
+        this._callSubscriber(); 
+        break;
+      case `UPDATE_MESSAGE`:
+        this._state.messagesPage.newMessageText = action.newText;
+        this._callSubscriber();
+        break;
+      default :
+        console.log(`default`) 
+    }
+  }
 }
-
 
 window.store = store;
 export default store;
