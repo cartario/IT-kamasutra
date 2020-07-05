@@ -1,22 +1,27 @@
 import React from 'react';
 import {addMessageAC, updateMessageAC} from '../../reducers/message-reducer.js';
 import Messages from './messages.jsx';
+import StoreContext from '../../context.js';
 
-function MessagesContainer(props){
-	
-	const state = props.store.getState();
-	
-	const onChangeMessage = (value) => {
-		props.store.dispatch(updateMessageAC(value));
-	}
+function MessagesContainer(){	
+		
+	return (
+		<StoreContext.Consumer>
+			{(store) =>	{
+			const onChangeMessage = (value) => {
+				store.dispatch(updateMessageAC(value));
+			};
 
-	const addMessageLocal = () => {		
-		props.store.dispatch(addMessageAC());
-	};
-	
-	return (		
-		<Messages messagesPageState = {state.messagesPage} addMessageLocal = {addMessageLocal} onChangeMessage = {onChangeMessage}/>	
-	);
+			const addMessageLocal = () => {		
+				store.dispatch(addMessageAC());
+			};
+			return <Messages	messagesPageState = {store.getState().messagesPage} 
+											addMessageLocal = {addMessageLocal} 
+											onChangeMessage = {onChangeMessage}/>
+				}			
+			}
+		</StoreContext.Consumer>
+	)
 }
 
 export default MessagesContainer;

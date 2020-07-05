@@ -5,14 +5,16 @@ import * as serviceWorker from './serviceWorker';
 // import store from "./store.js";
 import {store} from "./redux-store.js";
 import App from './components/app/App.jsx';
-
+import StoreContext from './context.js';
 
 export const renderEntireTree = () => {
   
   ReactDOM.render(
     <React.StrictMode>
-      <App store = {store}
-      dispatch={store.dispatch.bind(store)} />
+      <StoreContext.Provider value = {store}>		
+        <App store = {store}
+        dispatch={store.dispatch.bind(store)} />
+      </StoreContext.Provider>
     </React.StrictMode>,
     document.getElementById('root')
   );

@@ -4,7 +4,9 @@ import DialogItem from './dialogItem/dialogItem.jsx';
 import ChatItem from './chatItem/chatItem.jsx';
 
 
+
 function Messages(props){
+
 	const {messagesPageState, addMessageLocal, onChangeMessage} = props;
 
 	const inputRef = React.createRef();	
