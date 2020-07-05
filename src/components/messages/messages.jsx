@@ -2,20 +2,16 @@ import React from 'react';
 import s from './messages.module.css';
 import DialogItem from './dialogItem/dialogItem.jsx';
 import ChatItem from './chatItem/chatItem.jsx';
-import {addMessageAC, updateMessageAC} from '../../reducers/message-reducer.js';
+
 
 function Messages(props){
-	const {messagesPageState, dispatch} = props;
+	const {messagesPageState, addMessageLocal, onChangeMessage} = props;
 
 	const inputRef = React.createRef();	
 
-	const changeHandler = (e) => {
-		dispatch(updateMessageAC(e.target.value));
+	const changeMessage = (e) => {
+		onChangeMessage(e.target.value);
 	}
-
-	const addMessageLocal = () => {		
-		dispatch(addMessageAC());
-	};
 	
 	return (		
 		<div className={s.container}>
@@ -35,7 +31,7 @@ function Messages(props){
 					</ul>
 
 					<div className={s.newMessage}>
-						<textarea onChange= {changeHandler} className={s.input_newMessage} placeholder='text message' ref={inputRef} value={messagesPageState.newMessageText}></textarea>
+						<textarea onChange= {changeMessage} className={s.input_newMessage} placeholder='text message' ref={inputRef} value={messagesPageState.newMessageText}></textarea>
 						<button onClick={addMessageLocal} className={s.btn}>NEW MESSAGE</button>
 					</div>
 

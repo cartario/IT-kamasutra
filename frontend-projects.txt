@@ -1,0 +1,8 @@
+1.React:	https://github.com/cartario/1175789-what-to-watch-4
+2.React+верстка: 	https://github.com/cartario/it-kama-react		
+3.JS:	https://github.com/cartario/1175789-big-trip-11		
+4. Верстка+JS(только моб.версия): 	https://github.com/cartario/kmbdance	
+5. JS: 	https://github.com/cartario/1175789-keksobooking-19	
+6. Верстка(адаптивная):	https://github.com/cartario/1175789-pink-18		
+7. Верстка:	https://github.com/cartario/1175789-device-26		
+8. Верстка: 	https://github.com/cartario/1175789-nerds-26
