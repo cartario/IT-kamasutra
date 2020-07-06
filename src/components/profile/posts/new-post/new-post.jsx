@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './new-post.module.css';
 import {addPostAC, updatePostAC} from '../../../../reducers/profile-reducer.js';
-
+import Post from '../post/post.jsx';
 
 const NewPost =(props)=> {
 
@@ -22,7 +22,13 @@ const NewPost =(props)=> {
 				<button onClick={addPostLocal} className = {s.btn}>Send new post</button>
 			</div>
 		</div>
+
+		{profilePageState.users.map((user,i) => 
+		<Post user={user} key={i} />
+		)}
+		
 	</div>
+	
 	)
 }
 

@@ -15,8 +15,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {	
 	
 	return {
-		addMessageLocal: (value) => {dispatch(updateMessageAC(value))},
-		onChangeMessage: () => {dispatch(addMessageAC())},
+		addMessageLocal: () => {dispatch(addMessageAC())},
+		onChangeMessage: (value) => {dispatch(updateMessageAC(value))},
 	}
 };
 

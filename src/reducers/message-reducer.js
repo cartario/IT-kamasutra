@@ -37,15 +37,19 @@ export const messageReducer = (state = initialState, action) => {
       const dataMes = {
         id: 0,
         message: state.newMessageText,
-      };      
-      state.dataMessages.push(dataMes);
-      state.newMessageText = '';      
-      return state;
+      };   
+      let stateCopy = {...state};
+      stateCopy.dataMessages = [...state.dataMessages];
+
+      stateCopy.dataMessages.push(dataMes);
+      stateCopy.newMessageText = '';      
+      return stateCopy;
     case Constants.UPDATE_MESSAGE:
+      // let copyState = {...state};
       
-      state.newMessageText = action.newText;  
+      // copyState.newMessageText = action.newText;  
       
-      return state;
+      return Object.assign({}, state, {newMessageText: action.newText});
     default :
       return state;  
   }

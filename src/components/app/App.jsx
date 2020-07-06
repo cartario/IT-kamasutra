@@ -9,11 +9,8 @@ import Music from '../music/music.jsx';
 import News from '../news/news.jsx';
 import Settings from '../settings/settings.jsx';
 
-
-
 function App(props) {
 	
-
   return (
 		<BrowserRouter>
 			<div className="app-wrapper">

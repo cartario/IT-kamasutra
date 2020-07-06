@@ -52,18 +52,34 @@ const initialState = {
 export const profileReducer = (state = initialState, action) => {
   
   switch(action.type) {
-    case Constants.ADD_POST:
+    case Constants.ADD_POST: {
+        
         const user = {
           src: 'https://i09.fotocdn.net/s114/db3e293bd3710194/user_xl/2581623082.jpg',
           message: state.newPostMessage,
           likes: 5,
         }
-        state.users.push(user);
-        state.newPostMessage = ``;        
-        return state;
-      case Constants.UPDATE_POST:
-        state.newPostMessage = action.newText;        
-        return state;
+        
+        // 2й вариант
+        // let stateCopy = {...state};
+        // stateCopy.users = [...state.users];        
+        // stateCopy.users.push(user);
+        // stateCopy.newPostMessage = ``;  
+
+        return Object.assign({}, state, {
+            users: [...state.users].concat(user), 
+            newPostMessage: ``
+          });
+        // return stateCopy;
+      }
+
+      case Constants.UPDATE_POST: {
+        let stateCopy = {...state};
+        stateCopy.newPostMessage = action.newText;  
+
+        // return Object.assign({}, state, {newPostMessage: action.newText}); - 2 вариант 
+        return stateCopy;
+      }
       default :
         return state;
   }
