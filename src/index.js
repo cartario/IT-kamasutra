@@ -6,14 +6,17 @@ import * as serviceWorker from './serviceWorker';
 import {store} from "./redux-store.js";
 import App from './components/app/App.jsx';
 import StoreContext from './context.js';
+import {Provider} from 'react-redux';
 
 export const renderEntireTree = () => {
   
   ReactDOM.render(
     <React.StrictMode>
-      <StoreContext.Provider value = {store}>		
-        <App store = {store}
-        dispatch={store.dispatch.bind(store)} />
+      <StoreContext.Provider value = {store}>	
+        <Provider store = {store}>	
+          <App store = {store}
+          dispatch={store.dispatch.bind(store)} />
+        </Provider>
       </StoreContext.Provider>
     </React.StrictMode>,
     document.getElementById('root')
@@ -23,6 +26,7 @@ export const renderEntireTree = () => {
 
 renderEntireTree();
 store.subscribe(()=>{
+
   renderEntireTree();
 });
 

@@ -13,6 +13,7 @@ function Messages(props){
 
 	const changeMessage = (e) => {
 		onChangeMessage(e.target.value);
+		
 	}
 	
 	return (		

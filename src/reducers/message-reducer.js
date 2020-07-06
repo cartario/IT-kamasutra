@@ -31,6 +31,7 @@ const initialState = {
 };
 
 export const messageReducer = (state = initialState, action) => {
+  
   switch (action.type) {    
     case Constants.ADD_MESSAGE:
       const dataMes = {
@@ -41,7 +42,9 @@ export const messageReducer = (state = initialState, action) => {
       state.newMessageText = '';      
       return state;
     case Constants.UPDATE_MESSAGE:
-      state.newMessageText = action.newText;     
+      
+      state.newMessageText = action.newText;  
+      
       return state;
     default :
       return state;  
