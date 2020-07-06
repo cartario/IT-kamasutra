@@ -7,6 +7,7 @@ import Profile from '../profile/profile.jsx';
 import MessagesContainer from '../messages/messages-container.jsx';
 import Music from '../music/music.jsx';
 import News from '../news/news.jsx';
+import UsersContainer from '../users/users-container.jsx';
 import Settings from '../settings/settings.jsx';
 
 function App(props) {
@@ -19,6 +20,7 @@ function App(props) {
 				<div className="app-content-wrapper">
 					<Route path='/profile' render={()=> <Profile store = {props.store}/>}/>
 					<Route path='/messages' render={() => <MessagesContainer />}/>
+					<Route path='/users' component={UsersContainer}/>
 					<Route path='/music' component={Music}/>
 					<Route path='/news' component={News}/>
 					<Route path='/settings' component={Settings}/>
