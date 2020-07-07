@@ -1,10 +1,20 @@
 import React from 'react';
 import s from './users.module.css';
+import * as axios from 'axios';
 
 const Users = (props) => {
   const {usersPageState, addFollow, addUnfollow, setUsersAC} =  props;
   const {users} = usersPageState;
   const totalFollowers = users.filter((user)=> user.followed ===true).length;
+
+  if (users.length === 0 ) {
+    axios
+      .get("https://reqres.in/api/users?page=2")
+      .then(response => {
+        setUsersAC(response.data.data);
+      }
+    )    
+  }
 
   return (
     <div>
