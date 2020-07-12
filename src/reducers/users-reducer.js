@@ -31,6 +31,17 @@ export const setUsersAC = (users) => {
   return {type: Constants.SET_USERS, payload: users};
 };
 
+const adapter = (data) => {  
+  return data.map((user)=>({
+    id: user.id + 10,
+    status: user.email,
+    photoUrl: user.avatar,
+    userName: user.first_name,
+    location: {country: user.last_name, cityName: 'City',}, 
+    followed: false,
+  }))  
+};
+
  export const usersReducer = (state = initialState, action) => {
   switch(action.type) {
     case Constants.FOLLOW:  {    
@@ -54,7 +65,8 @@ export const setUsersAC = (users) => {
     }
 
     case Constants.SET_USERS:
-        return {...state, users: [...state.users, ...action.payload]};
+      
+        return {...state, users: adapter(action.payload)};
     default :
       return state;
   };  
