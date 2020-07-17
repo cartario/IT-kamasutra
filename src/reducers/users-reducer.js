@@ -2,6 +2,8 @@ const Constants = {
   FOLLOW: 'FOLLOW',
   UNFOLLOW: 'UNFOLLOW',
   SET_USERS: 'SET_USERS',
+  CURRENT_PAGE: `CURRENT_PAGE`,
+  SET_TOTAL_USERS: `SET_TOTAL_USERS`,
 };
 
 const initialState = {
@@ -16,7 +18,10 @@ const initialState = {
   {id: 3, photoUrl: 'https://avatars.mds.yandex.net/get-pdb/2978932/a6d66cac-6739-44a1-9a77-260c5a3c5bd1/s1200', status: 'HeyYo! Iam BossToo',followed: false, userName: 'Dasha', location: {country: 'Poland', cityName: 'Warszawa'}}, 
   {id: 4, photoUrl: 'https://avatars.mds.yandex.net/get-pdb/2978932/a6d66cac-6739-44a1-9a77-260c5a3c5bd1/s1200', status: 'HeyYo! Iam BossToo',followed: true, userName: 'Tasha', location: {country: 'Poland', cityName: 'Warszawa'}}, 
   
-  ]
+  ],
+  totalUsersCount: 0,
+  pageSize: 3,
+  currentPage: 1,
 }
 
 export const followAC = (userId) => {  
@@ -29,6 +34,14 @@ export const unfollowAC = (userId) => {
 
 export const setUsersAC = (users) => {
   return {type: Constants.SET_USERS, payload: users};
+};
+
+export const setCurrentPageAC = (pageId) => {
+  return {type: Constants.CURRENT_PAGE, payload: pageId};
+};
+
+export const setTotalUsersCountAC = (totalUsers) => {
+  return {type: Constants.SET_TOTAL_USERS, payload: totalUsers};
 };
 
 const adapter = (data) => {  
@@ -64,9 +77,16 @@ const adapter = (data) => {
       return stateCopy;
     }
 
-    case Constants.SET_USERS:
-      
+    case Constants.SET_USERS:      
         return {...state, users: adapter(action.payload)};
+
+    case Constants.CURRENT_PAGE:  
+      return {...state, currentPage: action.payload};
+
+    case Constants.SET_TOTAL_USERS:  
+      return {...state, totalUsersCount: action.payload};
+
+
     default :
       return state;
   };  

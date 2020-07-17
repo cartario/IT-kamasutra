@@ -43,3 +43,21 @@
 .blueTheme {
   color: blue;
 }
+
+.pagination {
+  margin: 5px;
+}
+
+.pagination_item {
+  margin: 5px;
+  padding: 15px;
+  border: 1px solid black;
+}
+
+.pagination_item__active {
+
+  font-weight: bold;
+  border-color: blue;
+  background-color: blue;
+  color:white;
+}
