@@ -4,6 +4,7 @@ const Constants = {
   SET_USERS: 'SET_USERS',
   CURRENT_PAGE: `CURRENT_PAGE`,
   SET_TOTAL_USERS: `SET_TOTAL_USERS`,
+  IS_FETCHING: `IS_FETCHING`,
 };
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
   totalUsersCount: 0,
   pageSize: 3,
   currentPage: 1,
+  isFetching: false,
 }
 
 export const followAC = (userId) => {  
@@ -42,6 +44,10 @@ export const setCurrentPageAC = (pageId) => {
 
 export const setTotalUsersCountAC = (totalUsers) => {
   return {type: Constants.SET_TOTAL_USERS, payload: totalUsers};
+};
+
+export const setIsFetchingAC = (value) => {
+  return {type: Constants.IS_FETCHING, payload: value};
 };
 
 const adapter = (data) => {  
@@ -86,6 +92,8 @@ const adapter = (data) => {
     case Constants.SET_TOTAL_USERS:  
       return {...state, totalUsersCount: action.payload};
 
+    case Constants.IS_FETCHING:  
+      return {...state, isFetching: action.payload};
 
     default :
       return state;
