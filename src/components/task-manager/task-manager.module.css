@@ -1,0 +1,245 @@
+.taskmanager {
+  margin-right: 15px;
+}
+
+.tasks__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+
+.tasks__list {
+  padding: 0;
+}
+
+.tasks__item {
+  display: flex;
+  height: 42px;
+}
+
+.item {
+
+}
+
+.item__name {
+  display: flex;
+  align-items: center;
+  width: 183px;
+  padding: 20px;
+  border: 1px solid #E6E6E6;
+  box-sizing: border-box;
+}
+
+.item__description { 
+  display: flex;  
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  border: 1px solid #E6E6E6;
+  box-sizing: border-box;
+}
+
+.item__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  padding: 20px;
+  border: 1px solid #E6E6E6;
+  box-sizing: border-box;
+}
+
+.item__link {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: 10px;
+}
+
+.item__link:active {
+  opacity: 0.3;
+}
+
+.item__link__edit {
+  background: url("../../pic/Vector.png") no-repeat;
+}
+
+.item__link__delete {
+  background: url("../../pic/Vector-2.png") no-repeat;
+}
+
+.header__title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 37px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.new_task {
+  width: 462px;
+  height: 182px;
+  margin-bottom: 15px;
+  background: #FFFFFF;
+  border: 1px solid #F2F2F2;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.new_task__container {
+  position: relative;
+  margin: 32px;
+}
+
+.new_task__label {  
+  display: flex;
+  margin: 5px 0;
+  align-items: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;  
+  color: #000000;
+}
+
+.new_task__input {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  background: #F2F2F2;
+  border-radius: 4px;
+  border: none;
+}
+
+.new_task__err {
+  display: flex;
+  margin: 5px 0;
+  align-items: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FF0000;
+}
+
+.new_task__button_close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  background: url("../../pic/close-btn.png") no-repeat;
+  border: none;
+}
+
+.new_task__button_close:active {
+  opacity: 0.3;
+}
+
+.full_task {
+  width: 462px;
+  min-height: 182px;
+  margin-bottom: 15px;
+  background: #FFFFFF;  
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.full_task__container {
+  position: relative;
+  margin: 32px;
+}
+
+.full_task__label {  
+  display: flex;
+  margin: 5px 0;
+  align-items: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;  
+  color: #000000;
+}
+
+.full_task__info {
+  width: 100%;
+  min-height: 40px;
+  box-sizing: border-box;
+  background: #F2F2F2;
+  border-radius: 4px;
+  border: none;
+}
+
+.button {
+  width: 148px;
+  height: 36px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  border: 1px solid;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: none;
+}
+
+.button__add {
+  border-color: #39B54A;
+}
+
+.button__add:active {
+  background: #39B54A;
+  border-color: #39B54A;
+  color: white;
+} 
+
+.new_task__button {
+  margin-top: 30px;
+  float: right;
+  border-color: #39B54A;
+}
+
+.new_task__button:active {
+  background: #39B54A;
+  border-color: #39B54A;
+  color: white;
+} 
+
+.full_task__button {
+  margin-top: 30px;
+  float: left;
+  border-color: #0071BC;
+  text-decoration: none;
+}
+
+.full_task__button:active {
+  background: #0071BC;
+  border-color:#0071BC;
+  color: white;
+} 
+
+.visually_hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

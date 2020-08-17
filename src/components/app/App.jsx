@@ -9,6 +9,8 @@ import Music from '../music/music.jsx';
 import News from '../news/news.jsx';
 import UsersContainer from '../users/users-container.jsx';
 import Settings from '../settings/settings.jsx';
+import TaskManager from '../task-manager/task-manager.jsx';
+
 
 function App(props) {
 	
@@ -24,6 +26,7 @@ function App(props) {
 					<Route path='/music' component={Music}/>
 					<Route path='/news' component={News}/>
 					<Route path='/settings' component={Settings}/>
+					<Route path='/taskmanager' component={TaskManager}/>
 				</div>
 			
 			</div>
