@@ -18,8 +18,10 @@
   height: 42px;
 }
 
-.item {
-
+.item:hover {
+  border: 1px solid pink;
+  box-sizing: border-box;
+  transform: scale(1.01)
 }
 
 .item__name {
@@ -55,10 +57,13 @@
   width: 22px;
   height: 22px;
   margin: 10px;
+  border: none;
+  outline: none;
 }
 
 .item__link:active {
   opacity: 0.3;
+  
 }
 
 .item__link__edit {
@@ -81,13 +86,19 @@
 }
 
 .new_task {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
   width: 462px;
-  height: 182px;
+  min-height: 182px;
   margin-bottom: 15px;
   background: #FFFFFF;
   border: 1px solid #F2F2F2;
   box-sizing: border-box;
   border-radius: 4px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .new_task__container {

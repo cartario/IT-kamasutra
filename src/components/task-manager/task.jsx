@@ -18,7 +18,8 @@ class Task extends React.Component{
   }
 
   render(){
-    const {id, title} = this.props;
+    const {id, title, isShowingCreate} = this.props;
+
     return (
       <>
         <li className={`${s.tasks__item} ${s.item}`}>
@@ -26,11 +27,18 @@ class Task extends React.Component{
         <span className={s.item__description}>{title}</span>
           <div className={s.item__controls}>
             <div>
-              <a onClick={() => {this._editClickHandler(id)}} href="#1" className={`${s.item__link} ${s.item__link__edit}`}>
-              </a>
+              <button
+                onClick={() => {this._editClickHandler(id)}}
+                className={`${s.item__link} ${s.item__link__edit}`}
+                disabled = {isShowingCreate}>
+              </button>
             </div>
             <div>
-              <a onClick={() => {this._removeClickHandler(id)}} href="#2" className={`${s.item__link} ${s.item__link__delete}`}></a>
+              <button
+                onClick={() => {this._removeClickHandler(id)}}
+                className={`${s.item__link} ${s.item__link__delete}`}
+                disabled = {isShowingCreate}>
+              </button>
             </div>
           </div>
         </li>			

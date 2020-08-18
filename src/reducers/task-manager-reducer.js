@@ -9,9 +9,9 @@ const ActionType = {
 
 const initialState = {
 	data:[
-		{id:1, title: "text101",},
-		{id:2, title: "text102",},
-		{id:3, title: "text103",},
+		{id:1, title: "Устроиться на работу",},
+		{id:2, title: "Найти женщину своей мечты",},
+		{id:3, title: "Сьездить в Швейцарию",},
 	],
 	length: 1,
 	success: true,
