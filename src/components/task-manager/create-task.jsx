@@ -26,7 +26,7 @@ class CreateTask extends React.Component {
 	}
 
 	_closeTaskClickHandler(){
-
+    this.props.removeTask(103)
 	}
 
 	_changeHandler(e){
@@ -66,6 +66,10 @@ class CreateTask extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
 	addTask (text) {
 		dispatch(ActionCreator.addTask(text));
+  }, 
+  
+  removeTask(id) {
+		dispatch(ActionCreator.removeTask(id));
 	}, 
 })
 

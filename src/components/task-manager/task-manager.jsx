@@ -1,8 +1,9 @@
 import React from 'react';
 import s from './task-manager.module.css';
 import {NavLink} from 'react-router-dom';
-import CreateTask from './create-task.jsx';
 import {connect} from 'react-redux';
+import CreateTask from './create-task.jsx';
+import Task from './task.jsx';
 
 const isErr = false;
 const description = `lorem ipsum lorem ipsum 
@@ -33,26 +34,7 @@ const FullTask = () => {
 	);
 };
 
-const Task = (props) => {
-	const {id, title} = props;
-	return (
-	<>
-		<li onClick={()=> console.log(`taskClicked`)} className={`${s.tasks__item} ${s.item}`}>
-		<span className={s.item__name}>Задача №{id}</span>
-		<span className={s.item__description}>{title}</span>
-			<div className={s.item__controls}>
-				<div>
-					<a onClick={()=> console.log(`yo1`)} href="#1" className={`${s.item__link} ${s.item__link__edit}`}>
-					</a>
-				</div>
-				<div>
-					<a onClick={()=> console.log(`yo2`)} href="#2" className={`${s.item__link} ${s.item__link__delete}`}></a>
-				</div>
-			</div>
-		</li>			
-	</>
-	);
-};
+
 
 const TaskList = (props) => {
 	const {tasks} = props;
