@@ -1,6 +1,7 @@
 import {extend} from "../utils.js";
 
 const ActionType = {
+  GET_TASKS: `GET_TASKS`,
   ADD_TASK: 'ADD_TASK',
   
 };
@@ -26,7 +27,10 @@ export const ActionCreator = {
 export const reducer = (state = initialState, action) => {  
   switch (action.type) {    
     case ActionType.ADD_TASK:
-      return extend(state, {id: 0, text: action.payload});       
+      
+      const newTask = {id: 0, title: action.payload};
+
+      return extend(state, {data: [...state.data, newTask]});       
       
     default :
       return state;  
