@@ -9,9 +9,9 @@ const ActionType = {
 
 const initialState = {
 	data:[
-		{id:101, title: "text101",},
-		{id:102, title: "text102",},
-		{id:103, title: "text103",},
+		{id:1, title: "text101",},
+		{id:2, title: "text102",},
+		{id:3, title: "text103",},
 	],
 	length: 1,
 	success: true,
@@ -19,10 +19,15 @@ const initialState = {
 };
 
 export const ActionCreator = {
-  addTask: (text) => ({
+  addTask: (id, text) => {
+
+    return ({
       type: ActionType.ADD_TASK,
-      payload: text,
-    }),
+      payload: {
+        id: id,
+        text: text},
+    })
+  },
 
   removeTask: (id) => ({
     type: ActionType.REMOVE_TASK,
@@ -33,7 +38,8 @@ export const ActionCreator = {
 export const reducer = (state = initialState, action) => {  
   switch (action.type) {    
     case ActionType.ADD_TASK:      
-      const newTask = {id: 0, title: action.payload};
+      const newTask = {id: action.payload.id, title: action.payload.text};
+
       return extend(state, {data: [...state.data, newTask]});
       
     case ActionType.REMOVE_TASK:      

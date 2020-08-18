@@ -21,8 +21,8 @@ class CreateTask extends React.Component {
 
 	_submitHandler(e){
 		e.preventDefault();
-    this.props.addTask(this.state.text)
-
+    this.props.addTask(this.props.currentId, this.state.text)
+    console.log(this.props.currentId)
 	}
 
 	_closeTaskClickHandler(){
@@ -64,8 +64,8 @@ class CreateTask extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-	addTask (text) {
-		dispatch(ActionCreator.addTask(text));
+	addTask (id, text) {
+		dispatch(ActionCreator.addTask(id, text));
   }, 
   
   removeTask(id) {

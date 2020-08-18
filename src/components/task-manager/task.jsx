@@ -6,6 +6,7 @@ import {ActionCreator} from '../../reducers/task-manager-reducer.js';
 class Task extends React.Component{
   constructor(props){
     super(props)
+
   }
 
   _removeClickHandler(id) {

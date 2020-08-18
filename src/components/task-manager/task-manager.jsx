@@ -34,10 +34,11 @@ const FullTask = () => {
 	);
 };
 
-
-
 const TaskList = (props) => {
-	const {tasks} = props;
+	const {tasks} = props;	
+	let currentId;
+	tasks.length ? currentId = tasks[tasks.length - 1].id + 1: currentId = 1;
+	
 	return (
 		<section className={`${s.taskmanager} ${s.tasks}`}>
 			<div className={`${s.tasks__header} ${s.header}`}>
@@ -49,7 +50,7 @@ const TaskList = (props) => {
 					{tasks.map((task, i)=> <Task key={task.id} id={task.id} title={task.title}/>)}
 				</ul>
 			</div>
-			<CreateTask/>
+			<CreateTask currentId = {currentId}/>
 			<FullTask/>
 		</section>		
 	);
@@ -62,8 +63,7 @@ const TaskManager = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	
+const mapStateToProps = (state) => ({	
 	tasks: state.taskManagerPage.data,
 })
 
