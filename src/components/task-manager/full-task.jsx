@@ -3,6 +3,7 @@ import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {setFocusEnd} from '../../utils';
+import {Operation} from '../../reducers/task-manager-reducer.js';
 
 class FullTask extends React.Component{
 	constructor(props){
@@ -28,17 +29,23 @@ class FullTask extends React.Component{
 	_changeHandler(e){
 		this.setState({
 			text: e.target.value,
-		});		
+		});	
+				
+		console.log(this.state)
 	}
 
 	_backClickHandler(){
 		this.props.toggleFullHandler();
-		console.log(this.state)
+		this.props.editTask(this.props.activeTask.id, this.state.text);
 	}
 
 	componentDidMount(){
 		const textarea = this._ref.current;
 		setFocusEnd(textarea);		
+	}
+
+	componentDidUpdate(){
+		
 	}
 
 	render(){
@@ -66,7 +73,10 @@ class FullTask extends React.Component{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	
+	editTask: (id, text) => {
+		dispatch(Operation.editTask(id, text));
+	},
+
 });
 
 export {FullTask};

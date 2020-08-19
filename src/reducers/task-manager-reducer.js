@@ -59,6 +59,16 @@ export const Operation = {
         throw err;
       })
   },
+
+  editTask: (id, title) => (dispatch, getState, api) => {
+    return api.post(`/list/${id}`, {title: title})
+      .then((res) => {
+        return res;
+      })
+      .catch((err)=>{
+        throw err;
+      })
+  },
 };
 
 export const ActionCreator = {
