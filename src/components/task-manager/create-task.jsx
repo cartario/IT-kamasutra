@@ -3,8 +3,6 @@ import s from './task-manager.module.css';
 import { connect } from 'react-redux';
 import {ActionCreator} from '../../reducers/task-manager-reducer.js';
 
-
-
 const MIN_REQUIRED_LETTERS_FOR_SAFE = 5;
 
 class CreateTask extends React.Component {

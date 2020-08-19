@@ -1,10 +1,17 @@
 import {extend} from "../utils.js";
 
 const ActionType = {
-  GET_TASKS: `GET_TASKS`,
+  LOAD_TASKS: `LOAD_TASKS`,
   ADD_TASK: 'ADD_TASK',
   REMOVE_TASK: `REMOVE_TASK`,
   
+};
+
+const adapter = (data) => {
+  return {
+    id: 4,
+    title: `Загрузить данные с сервера`
+  }
 };
 
 const initialState = {
@@ -18,7 +25,24 @@ const initialState = {
 	error: "",
 };
 
+export const Operation = {
+  loadTasks: () => (dispatch, getState, api) => {
+    return api.get()
+    .then((response) => 
+      dispatch(ActionCreator.loadTasks(adapter(response.data.data)))      
+    )
+    .catch((err)=>{
+            
+    });
+  },
+};
+
 export const ActionCreator = {
+  loadTasks: (tasks) => ({
+    type: ActionType.LOAD_TASKS,
+    payload: tasks,
+  }),
+
   addTask: (id, text) => {
 
     return ({
@@ -45,6 +69,10 @@ export const reducer = (state = initialState, action) => {
     case ActionType.REMOVE_TASK:      
       const tasks = state.data.filter((task) => task.id !== action.payload);
       return extend(state, {data: tasks});   
+
+    case ActionType.LOAD_TASKS:      
+      
+      return extend(state, {data: [...state.data, action.payload]});   
       
     default :
       return state;  

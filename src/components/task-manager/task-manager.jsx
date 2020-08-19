@@ -2,6 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import TaskList from './task-list.jsx';
 
+
+
+
+
 const TaskManager = (props) => {
 	const {tasks} = props;
 	return (
