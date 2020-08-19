@@ -59,7 +59,7 @@ class CreateTask extends React.Component {
 
 	render() {
 		return (
-			<section className={s.new_task} onKeyDown={this._escHandler}>
+			<section className={this.state.isErr ? `${s.new_task} ${s.shake}` : s.new_task } onKeyDown={this._escHandler}>
 				<div className={s.new_task__container}>
 					<form onSubmit={this._submitHandler} className={s.new_task__form}>
 						<label className={s.new_task__label}

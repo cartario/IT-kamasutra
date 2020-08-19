@@ -14,11 +14,17 @@ class Task extends React.Component{
   }
 
   _editClickHandler(id) {
-    console.log(id)
+    this.props.toggleFullHandler();
+
+    
+    this.props.setActiveTask(
+      {id: this.props.id,
+        title: this.props.title,      
+      });
   }
 
   render(){
-    const {id, title, isShowingCreate} = this.props;
+    const {id, title, isShowingCreate, isShowingFull} = this.props;
 
     return (
       <>
@@ -30,14 +36,14 @@ class Task extends React.Component{
               <button
                 onClick={() => {this._editClickHandler(id)}}
                 className={`${s.item__link} ${s.item__link__edit}`}
-                disabled = {isShowingCreate}>
+                disabled = {isShowingCreate || isShowingFull}>
               </button>
             </div>
             <div>
               <button
                 onClick={() => {this._removeClickHandler(id)}}
                 className={`${s.item__link} ${s.item__link__delete}`}
-                disabled = {isShowingCreate}>
+                disabled = {isShowingCreate || isShowingFull}>
               </button>
             </div>
           </div>
