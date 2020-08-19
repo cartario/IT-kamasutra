@@ -3,7 +3,7 @@ import axios from "axios";
 export const createApi = () => {
 
   const api = axios.create({
-    baseURL: `https://test.megapolis-it.ru/api/list`,
+    baseURL: `https://test.megapolis-it.ru/api`,
     timeout: 1000 * 5,
     withCredentials: false,
   });

@@ -1,17 +1,24 @@
 import {extend} from "../utils.js";
+import TaskList from "../components/task-manager/task-list.jsx";
 
 const ActionType = {
   LOAD_TASKS: `LOAD_TASKS`,
   ADD_TASK: 'ADD_TASK',
-  REMOVE_TASK: `REMOVE_TASK`,
-  
+  REMOVE_TASK: `REMOVE_TASK`,  
 };
 
 const adapter = (data) => {
-  return {
-    id: 4,
-    title: `Загрузить данные с сервера`
+  if(data.length === 0){
+    return {
+      id: 4,
+      title: `Загрузить данные с сервера`
+    }
+  } else {
+    
+    return data[data.length - 1];
   }
+
+  
 };
 
 const initialState = {
@@ -27,13 +34,24 @@ const initialState = {
 
 export const Operation = {
   loadTasks: () => (dispatch, getState, api) => {
-    return api.get()
+    return api.get(`/list`)
     .then((response) => 
       dispatch(ActionCreator.loadTasks(adapter(response.data.data)))      
     )
-    .catch((err)=>{
-            
+    .catch((err)=>{   
+
+      throw err;        
     });
+  },
+
+  postTask: (title) => (dispatch, getState, api) => {
+
+    return api.post(`/list`,{title: title})
+      .then((res) => console.log(res))
+      .catch((err)=> {
+
+        throw err;
+      })
   },
 };
 
@@ -71,9 +89,8 @@ export const reducer = (state = initialState, action) => {
       return extend(state, {data: tasks});   
 
     case ActionType.LOAD_TASKS:      
-      
-      return extend(state, {data: [...state.data, action.payload]});   
-      
+      return extend(state, {data: [...state.data, action.payload]});
+            
     default :
       return state;  
   }

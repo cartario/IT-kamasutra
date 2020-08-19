@@ -2,6 +2,7 @@ import React from 'react';
 import s from './task-manager.module.css';
 import { connect } from 'react-redux';
 import {ActionCreator} from '../../reducers/task-manager-reducer.js';
+import {Operation} from '../../reducers/task-manager-reducer.js';
 
 const MIN_REQUIRED_LETTERS_FOR_SAFE = 5;
 
@@ -87,6 +88,7 @@ class CreateTask extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
 	addTask (id, text) {
 		dispatch(ActionCreator.addTask(id, text));
+		dispatch(Operation.postTask(text));
   }, 
   
   removeTask(id) {
