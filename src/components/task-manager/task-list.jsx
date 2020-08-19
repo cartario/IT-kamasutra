@@ -53,6 +53,7 @@ class TaskList extends React.Component{
           >Добавить</button>
         </div>
         <div className = {s.tasks__container}>
+          {tasks.length ? ``: <p>Ура! Все задачи выполнены!!!!!!</p>}
           <ul className={s.tasks__list}>
             {tasks.map((task, i)=> <Task 
             key={task.id} 

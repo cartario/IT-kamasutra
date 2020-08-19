@@ -214,6 +214,10 @@
   background: none;
 }
 
+.button:hover {
+  transform: scale(1.1)
+}
+
 .button__add {
   border-color: #39B54A;
 }
