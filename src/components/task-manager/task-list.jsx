@@ -3,6 +3,7 @@ import s from './task-manager.module.css';
 import CreateTask from './create-task.jsx';
 import Task from './task.jsx';
 import FullTask from './full-task.jsx';
+import DeleteTask from './delete-task.jsx';
 
 class TaskList extends React.Component{
   constructor(props){
@@ -12,10 +13,12 @@ class TaskList extends React.Component{
       activeTask: null,
       isShowingCreate: false,
       isShowingFull: false,
+      isShowingDelete: false,
     };
 
     this._toggleCreateHandler = this._toggleCreateHandler.bind(this);
     this._toggleFullHandler = this._toggleFullHandler.bind(this);
+    this._toggleDeleteHandler = this._toggleDeleteHandler.bind(this);
     this._setActiveTask = this._setActiveTask.bind(this);
   }
 
@@ -34,6 +37,12 @@ class TaskList extends React.Component{
   _toggleFullHandler(){
     this.setState({
       isShowingFull: !this.state.isShowingFull,
+    })
+  }
+
+  _toggleDeleteHandler(){
+    this.setState({
+      isShowingDelete: !this.state.isShowingDelete,
     })
   }
 
@@ -61,13 +70,15 @@ class TaskList extends React.Component{
             setActiveTask = {this._setActiveTask}
             isShowingCreate = {this.state.isShowingCreate}
             isShowingFull = {this.state.isShowingFull}
+            isShowingDelete = {this.state.isShowingDelete}
             toggleFullHandler = {this._toggleFullHandler}
+            toggleDeleteHandler = {this._toggleDeleteHandler}
             />)}
           </ul>
         </div>
         {this.state.isShowingCreate && <CreateTask currentId = {currentId} toggleClickHandler = {this._toggleCreateHandler}/>}
         {this.state.isShowingFull && <FullTask activeTask = {this.state.activeTask} toggleFullHandler = {this._toggleFullHandler}/>}
-        
+        {this.state.isShowingDelete && <DeleteTask activeTask = {this.state.activeTask} toggleDeleteHandler = {this._toggleDeleteHandler}/>}
       </section>		
     );
   }

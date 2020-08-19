@@ -168,6 +168,10 @@
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+.delete_task {
+  box-shadow: 0 14px 28px rgba(219, 5, 5, 0.5), 0 10px 10px rgba(255, 4, 4, 0.22);
+}
+
 .full_task__container {
   position: relative;
   margin: 32px;
@@ -212,6 +216,7 @@
   box-sizing: border-box;
   border-radius: 4px;
   background: none;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -227,6 +232,17 @@
   border-color: #39B54A;
   color: white;
 } 
+
+.button__delete {
+  margin-top: 15px;
+  border-color: red;
+}
+
+.button__delete:active {
+  background: red;
+  border-color: red;
+  color: white;
+}
 
 .new_task__button {
   margin-top: 30px;
@@ -254,6 +270,7 @@
   border-color:#0071BC;
   color: white;
 } 
+
 
 .visually_hidden {
   position: absolute;
