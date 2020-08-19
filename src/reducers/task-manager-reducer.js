@@ -9,16 +9,13 @@ const ActionType = {
 
 const adapter = (data) => {
   if(data.length === 0){
-    return {
+    return [{
       id: 4,
       title: `Загрузить данные с сервера`
-    }
-  } else {
-    
-    return data[data.length - 1];
-  }
-
-  
+    }]
+  } else {    
+    return data;
+  }  
 };
 
 const initialState = {
@@ -38,18 +35,27 @@ export const Operation = {
     .then((response) => 
       dispatch(ActionCreator.loadTasks(adapter(response.data.data)))      
     )
-    .catch((err)=>{   
-
+    .catch((err)=>{
       throw err;        
     });
   },
 
   postTask: (title) => (dispatch, getState, api) => {
-
     return api.post(`/list`,{title: title})
-      .then((res) => console.log(res))
+      .then((res) => {
+        return res;
+      })
       .catch((err)=> {
+        throw err;
+      })
+  },
 
+  deleteTask: (id) => (dispatch, getState, api) => {
+    return api.delete(`/list/${id}`)
+      .then((res) => {
+        return res;
+      })
+      .catch((err)=>{
         throw err;
       })
   },
@@ -88,8 +94,8 @@ export const reducer = (state = initialState, action) => {
       const tasks = state.data.filter((task) => task.id !== action.payload);
       return extend(state, {data: tasks});   
 
-    case ActionType.LOAD_TASKS:      
-      return extend(state, {data: [...state.data, action.payload]});
+    case ActionType.LOAD_TASKS:
+      return extend(state, {data: [...state.data, ...action.payload]});
             
     default :
       return state;  
