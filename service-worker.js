@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/it-kama-react/precache-manifest.dd2655bfb926daf5e61ab01c5544a50c.js"
+  "/it-kama-react/precache-manifest.845a7fd185e914734e561dd07315ad43.js"
 );
 
 self.addEventListener('message', (event) => {
