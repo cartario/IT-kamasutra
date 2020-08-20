@@ -67,7 +67,7 @@ export const Operation = {
     
     return api.post(`/list/${id}`, {title: title})
       .then((response) => {  
-        window.location.reload(false);        
+        
       })
       .catch((err)=>{
         throw err;
@@ -133,7 +133,7 @@ export const reducer = (state = initialState, action) => {
         return false;
       }
 
-      const newData = [].concat(state.data.slice(0, index), action.payload, state.data.slice(index + 1));
+      const newData = [].concat(state.data.slice(0, index), {id: action.payload.id, title: action.payload.text}, state.data.slice(index + 1));
       
       return extend(state, {data: newData});   
             
