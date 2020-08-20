@@ -21,7 +21,8 @@ class Task extends React.Component{
   }
 
   render(){
-    const {id, title, isShowingCreate, isShowingFull, isShowingDelete} = this.props;    
+    const {id, title, isDisabled} = this.props;    
+    
     return (
       <>      
         <li className={`${s.tasks__item} ${s.item}`}>
@@ -32,14 +33,14 @@ class Task extends React.Component{
               <button
                 onClick={() => {this._editClickHandler()}}
                 className={`${s.item__link} ${s.item__link__edit}`}
-                disabled = {isShowingCreate || isShowingFull || isShowingDelete}>
+                disabled = {isDisabled}>
               </button>
             </div>
             <div>
               <button
                 onClick={() => {this._removeClickHandler()}}
                 className={`${s.item__link} ${s.item__link__delete}`}
-                disabled = {isShowingCreate || isShowingFull || isShowingDelete}>
+                disabled = {isDisabled}>
               </button>
             </div>
           </div>          

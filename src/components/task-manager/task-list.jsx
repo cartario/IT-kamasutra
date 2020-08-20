@@ -19,9 +19,7 @@ class TaskList extends React.Component{
     this._toggleCreateHandler = this._toggleCreateHandler.bind(this);
     this._toggleFullHandler = this._toggleFullHandler.bind(this);
     this._toggleDeleteHandler = this._toggleDeleteHandler.bind(this);    
-  }
-
- 
+  } 
 
   _toggleCreateHandler(){
     this.setState({
@@ -42,9 +40,11 @@ class TaskList extends React.Component{
   }
 
   render(){
-    const {tasks, isDataReady, isErrorPost, isAdding, isDeleting} = this.props;	      
+    const {tasks, isErrorPost, isAdding, isDeleting} = this.props;	      
     let currentId;
     tasks.length ? currentId = tasks[tasks.length - 1].id + 1: currentId = 1;
+
+    const isDisabled = (this.state.isShowingCreate || this.state.isShowingFull || this.state.isShowingDelete);
     
     return (
       <section className={`${s.taskmanager} ${s.tasks}`}>
@@ -53,7 +53,7 @@ class TaskList extends React.Component{
           <button 
             onClick={this._toggleCreateHandler} 
             className= {`${s.header__button} ${s.button} ${s.button__add}`}
-            disabled ={this.state.isShowingFull || this.state.isShowingCreate}
+            disabled ={isDisabled}
           >Добавить</button>
         </div>
         <div className = {s.tasks__container}>
@@ -64,14 +64,11 @@ class TaskList extends React.Component{
           <ul className={s.tasks__list}>
             {tasks.map((task, i)=> <Task 
             key={task.id} 
-            id={task.id} title={task.title}
+            id={task.id} title={task.title}            
             setActiveTask = {this.props.setActiveTask}
-            isShowingCreate = {this.state.isShowingCreate}
-            isShowingFull = {this.state.isShowingFull}
-            isShowingDelete = {this.state.isShowingDelete}
+            isDisabled = {isDisabled}
             toggleFullHandler = {this._toggleFullHandler}
-            toggleDeleteHandler = {this._toggleDeleteHandler}
-            isDataReady = {isDataReady}
+            toggleDeleteHandler = {this._toggleDeleteHandler}            
             />)}
           </ul>
         </div>
