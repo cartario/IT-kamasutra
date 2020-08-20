@@ -61,6 +61,7 @@ export const Operation = {
       })
       .catch((err)=> {
         dispatch(ActionCreator.setErrorPost(true));
+        dispatch(ActionCreator.setAddingTask(false));
         throw err;
       })
   },
@@ -69,10 +70,13 @@ export const Operation = {
     dispatch(ActionCreator.setDeletingTask(true));
     return api.delete(`/list/${id}`)
       .then((res) => {
+        dispatch(ActionCreator.removeTask(id));
         dispatch(ActionCreator.setDeletingTask(false));
+        dispatch(ActionCreator.setErrorPost(false));
       })
       .catch((err)=>{
         dispatch(ActionCreator.setDeletingTask(false));  
+        dispatch(ActionCreator.setErrorPost(true));
         throw err;
       })
   },
@@ -80,13 +84,14 @@ export const Operation = {
   editTask: (id, title) => (dispatch, getState, api) => {  
     dispatch(ActionCreator.setAddingTask(true));  
     return api.post(`/list/${id}`, {title: title})
-      .then((response) => {  
-        
+      .then((response) => {        
         dispatch(ActionCreator.editTask(id, title));
         dispatch(ActionCreator.setAddingTask(false));
+        dispatch(ActionCreator.setErrorPost(false));
       })
-      .catch((err)=>{
+      .catch((err)=>{        
         dispatch(ActionCreator.setAddingTask(false));  
+        dispatch(ActionCreator.setErrorPost(true));
         throw err;
       })
   },

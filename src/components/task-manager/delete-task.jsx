@@ -2,7 +2,6 @@ import React from 'react';
 import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
-import {ActionCreator} from '../../reducers/task-manager-reducer.js';
 import {Operation} from '../../reducers/task-manager-reducer.js';
 
 class DeleteTask extends React.Component{
@@ -50,8 +49,7 @@ class DeleteTask extends React.Component{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	removeTask(id) {
-		dispatch(ActionCreator.removeTask(id));
+	removeTask(id) {		
 		dispatch(Operation.deleteTask(id));
   },
 });
