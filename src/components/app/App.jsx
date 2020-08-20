@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, BrowserRouter} from 'react-router-dom';
+import {Route, BrowserRouter, HashRouter} from 'react-router-dom';
 import './App.css';
 import Header from '../header/header.jsx';
 import Nav from '../nav/nav.jsx';
@@ -15,7 +15,7 @@ import TaskManager from '../task-manager/task-manager.jsx';
 function App(props) {
 	
   return (
-		<BrowserRouter>
+		<HashRouter>
 			<div className="app-wrapper">
 				<Header />
 				<Nav sidebar={props.store.getState().sidebar} dispatch = {props.store.dispatch}/>
@@ -30,7 +30,7 @@ function App(props) {
 				</div>
 			
 			</div>
-		</BrowserRouter>
+		</HashRouter>
   );
 }
 
