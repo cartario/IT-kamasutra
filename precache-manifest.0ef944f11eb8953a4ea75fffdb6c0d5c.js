@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e340ae1c4041fb1f9414b5fbaf3dce03",
+    "revision": "2251ff8e687685009d8734765184579e",
     "url": "/it-kama-react/index.html"
   },
   {
-    "revision": "102da174e4030481b408",
+    "revision": "7ad83673f2becbbfe4d6",
     "url": "/it-kama-react/static/css/main.b8b8f8b2.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/it-kama-react/static/js/2.972cd276.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "102da174e4030481b408",
-    "url": "/it-kama-react/static/js/main.f3fc1d5c.chunk.js"
+    "revision": "7ad83673f2becbbfe4d6",
+    "url": "/it-kama-react/static/js/main.e053b4e1.chunk.js"
   },
   {
     "revision": "9bc98a48fe583820e3e6",
