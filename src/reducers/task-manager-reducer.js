@@ -5,6 +5,8 @@ const ActionType = {
   LOAD_TASKS: `LOAD_TASKS`,
   ADD_TASK: 'ADD_TASK',
   REMOVE_TASK: `REMOVE_TASK`,  
+  EDIT_TASK: `EDIT_TASK`,
+  IS_DATA_READY: `IS_DATA_READY`,
 };
 
 const adapter = (data) => {
@@ -26,14 +28,15 @@ const initialState = {
 	],
 	length: 1,
 	success: true,
-	error: "",
+  error: "",
+  isDataReady: false,
 };
 
 export const Operation = {
   loadTasks: () => (dispatch, getState, api) => {
     return api.get(`/list`)
     .then((response) => 
-      dispatch(ActionCreator.loadTasks(adapter(response.data.data)))      
+      dispatch(ActionCreator.loadTasks(adapter(response.data.data)))  
     )
     .catch((err)=>{
       throw err;        
@@ -61,9 +64,10 @@ export const Operation = {
   },
 
   editTask: (id, title) => (dispatch, getState, api) => {
+    
     return api.post(`/list/${id}`, {title: title})
-      .then((res) => {
-        return res;
+      .then((response) => {  
+        window.location.reload(false);        
       })
       .catch((err)=>{
         throw err;
@@ -78,7 +82,6 @@ export const ActionCreator = {
   }),
 
   addTask: (id, text) => {
-
     return ({
       type: ActionType.ADD_TASK,
       payload: {
@@ -90,6 +93,21 @@ export const ActionCreator = {
   removeTask: (id) => ({
     type: ActionType.REMOVE_TASK,
     payload: id,
+  }),
+
+  editTask: (id, text) => {
+    
+    return ({
+      type: ActionType.EDIT_TASK,
+      payload: {
+        id: id,
+        text: text},
+    })
+  },
+
+  isDataReady: (value) => ({
+    type: ActionType.IS_DATA_READY,
+    payload: value,
   }),
 };
 
@@ -106,6 +124,18 @@ export const reducer = (state = initialState, action) => {
 
     case ActionType.LOAD_TASKS:
       return extend(state, {data: [...state.data, ...action.payload]});
+
+    case ActionType.EDIT_TASK:
+      
+      const index = state.data.findIndex((task)=> task.id === action.payload.id);
+
+      if (index === -1) {
+        return false;
+      }
+
+      const newData = [].concat(state.data.slice(0, index), action.payload, state.data.slice(index + 1));
+      
+      return extend(state, {data: newData});   
             
     default :
       return state;  

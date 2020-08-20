@@ -3,7 +3,7 @@ import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {setFocusEnd} from '../../utils';
-import {Operation} from '../../reducers/task-manager-reducer.js';
+import {Operation, ActionCreator} from '../../reducers/task-manager-reducer.js';
 
 class FullTask extends React.Component{
 	constructor(props){
@@ -30,22 +30,17 @@ class FullTask extends React.Component{
 		this.setState({
 			text: e.target.value,
 		});	
-				
-		console.log(this.state)
 	}
 
-	_backClickHandler(){
-		this.props.toggleFullHandler();
+	_backClickHandler(){		
 		this.props.editTask(this.props.activeTask.id, this.state.text);
+		this.props.toggleFullHandler();
+		
 	}
 
 	componentDidMount(){
-		const textarea = this._ref.current;
+		const textarea = this._ref.current;		
 		setFocusEnd(textarea);		
-	}
-
-	componentDidUpdate(){
-		
 	}
 
 	render(){
@@ -59,9 +54,9 @@ class FullTask extends React.Component{
 						<p className={s.full_task__label}>
 							Краткое описание
 						</p>
-						<textarea onChange={this._changeHandler} className={s.full_task__info} defaultValue={title} rows="5" ref={this._ref}>
+						<input onChange={this._changeHandler} className={s.full_task__info} value={this.state.text} rows="5" ref={this._ref}>
 							
-						</textarea>					
+						</input>					
 						<NavLink onClick={this._backClickHandler} to="/taskmanager" className={`${s.button} ${s.full_task__button}`}>
 							Вернуться в список
 						</NavLink>
@@ -74,7 +69,8 @@ class FullTask extends React.Component{
 
 const mapDispatchToProps = (dispatch) => ({
 	editTask: (id, text) => {
-		dispatch(Operation.editTask(id, text));
+		dispatch(ActionCreator.editTask(id, text));   
+		dispatch(Operation.editTask(id, text));		
 	},
 
 });

@@ -3,13 +3,15 @@ import {connect} from 'react-redux';
 import TaskList from './task-list.jsx';
 
 const TaskManager = (props) => {
-	const {tasks} = props;
+	const {tasks, isDataReady} = props;
+	
 	return (
-		<TaskList tasks = {tasks}/>
+		<TaskList tasks = {tasks} isDataReady = {isDataReady}/>
 	);
 };
 
 const mapStateToProps = (state) => ({	
+	isDataReady: state.taskManagerPage.isDataReady,
 	tasks: state.taskManagerPage.data,
 })
 

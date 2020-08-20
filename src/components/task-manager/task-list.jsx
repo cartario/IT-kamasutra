@@ -47,7 +47,7 @@ class TaskList extends React.Component{
   }
 
   render(){
-    const {tasks} = this.props;	
+    const {tasks, isDataReady} = this.props;	    
     let currentId;
     tasks.length ? currentId = tasks[tasks.length - 1].id + 1: currentId = 1;
     
@@ -73,6 +73,7 @@ class TaskList extends React.Component{
             isShowingDelete = {this.state.isShowingDelete}
             toggleFullHandler = {this._toggleFullHandler}
             toggleDeleteHandler = {this._toggleDeleteHandler}
+            isDataReady = {isDataReady}
             />)}
           </ul>
         </div>
