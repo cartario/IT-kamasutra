@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/it-kama-react/static/css/main.b8b8f8b2.chunk.css",
-    "main.js": "/it-kama-react/static/js/main.e053b4e1.chunk.js",
-    "main.js.map": "/it-kama-react/static/js/main.e053b4e1.chunk.js.map",
+    "main.js": "/it-kama-react/static/js/main.fb50a31a.chunk.js",
+    "main.js.map": "/it-kama-react/static/js/main.fb50a31a.chunk.js.map",
     "runtime-main.js": "/it-kama-react/static/js/runtime-main.e7b8771b.js",
     "runtime-main.js.map": "/it-kama-react/static/js/runtime-main.e7b8771b.js.map",
-    "static/js/2.972cd276.chunk.js": "/it-kama-react/static/js/2.972cd276.chunk.js",
-    "static/js/2.972cd276.chunk.js.map": "/it-kama-react/static/js/2.972cd276.chunk.js.map",
+    "static/js/2.3062246c.chunk.js": "/it-kama-react/static/js/2.3062246c.chunk.js",
+    "static/js/2.3062246c.chunk.js.map": "/it-kama-react/static/js/2.3062246c.chunk.js.map",
     "index.html": "/it-kama-react/index.html",
-    "precache-manifest.0ef944f11eb8953a4ea75fffdb6c0d5c.js": "/it-kama-react/precache-manifest.0ef944f11eb8953a4ea75fffdb6c0d5c.js",
+    "precache-manifest.dfbcb68d4258acbc4d1428a08f705078.js": "/it-kama-react/precache-manifest.dfbcb68d4258acbc4d1428a08f705078.js",
     "service-worker.js": "/it-kama-react/service-worker.js",
     "static/css/main.b8b8f8b2.chunk.css.map": "/it-kama-react/static/css/main.b8b8f8b2.chunk.css.map",
-    "static/js/2.972cd276.chunk.js.LICENSE.txt": "/it-kama-react/static/js/2.972cd276.chunk.js.LICENSE.txt"
+    "static/js/2.3062246c.chunk.js.LICENSE.txt": "/it-kama-react/static/js/2.3062246c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e7b8771b.js",
-    "static/js/2.972cd276.chunk.js",
+    "static/js/2.3062246c.chunk.js",
     "static/css/main.b8b8f8b2.chunk.css",
-    "static/js/main.e053b4e1.chunk.js"
+    "static/js/main.fb50a31a.chunk.js"
   ]
 }
