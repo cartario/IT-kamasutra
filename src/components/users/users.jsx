@@ -37,7 +37,7 @@ class Users extends React.Component {
   }
 
   render(){
-    const {usersPageState, addFollow, addUnfollow, setCurrentPageAC} = this.props;
+    const {usersPageState, addFollow, addUnfollow} = this.props;
     const {users} = usersPageState;
     const totalFollowers = users.filter((user)=> user.followed === true).length;
 
