@@ -10,8 +10,6 @@ import thunkMiddleware from "redux-thunk";
 
 import {createApi} from '../src/components/task-manager/api.js';
 
-import {Operation} from '../src/reducers/task-manager-reducer.js';
-
 const api = createApi();
 
 const reducers = combineReducers({
@@ -28,10 +26,3 @@ export const store = createStore(
 			window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 	)
 );
-
-store.dispatch(Operation.loadTasks());
-
-// export const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ 
-//   ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f);
-
-window.store = store;

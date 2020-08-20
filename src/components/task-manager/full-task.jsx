@@ -3,7 +3,7 @@ import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {setFocusEnd} from '../../utils';
-import {Operation, ActionCreator} from '../../reducers/task-manager-reducer.js';
+import {Operation} from '../../reducers/task-manager-reducer.js';
 
 class FullTask extends React.Component{
 	constructor(props){
@@ -68,11 +68,9 @@ class FullTask extends React.Component{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	editTask: (id, text) => {
-		dispatch(ActionCreator.editTask(id, text));   
+	editTask: (id, text) => {		
 		dispatch(Operation.editTask(id, text));		
 	},
-
 });
 
 export {FullTask};

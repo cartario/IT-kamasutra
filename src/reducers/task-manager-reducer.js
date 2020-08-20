@@ -6,13 +6,16 @@ const ActionType = {
   REMOVE_TASK: `REMOVE_TASK`,  
   EDIT_TASK: `EDIT_TASK`,
   IS_DATA_READY: `IS_DATA_READY`,
+  IS_ERROR_POST: `IS_ERROR_POST`,
+  IS_ADDING_TASK: `IS_ADDING_TASK`,
+  IS_DELETING_TASK: `IS_DELETING_TASK`,
 };
 
 const adapter = (data) => {
-  if(data.length === 0){
+  if(!data){
     return [{
       id: 4,
-      title: `Загрузить данные с сервера`
+      title: `Что-то пошло не так! Возможно сервер недоступен`
     }]
   } else {    
     return data;
@@ -22,53 +25,68 @@ const adapter = (data) => {
 const initialState = {
 	data:[
 		{id:1, title: "Устроиться на работу",},
-		{id:2, title: "Найти женщину своей мечты",},
-		{id:3, title: "Сьездить в Швейцарию",},
+		// {id:2, title: "Найти женщину своей мечты",},
+		// {id:3, title: "Сьездить в Швейцарию",},
 	],
 	length: 1,
 	success: true,
   error: "",
   isDataReady: false,
+  isErrorPost: false,
+  isAdding: false,
+  isDeleting: false,
 };
 
 export const Operation = {
   loadTasks: () => (dispatch, getState, api) => {
+    dispatch(ActionCreator.setAddingTask(true));
     return api.get(`/list`)
-    .then((response) => 
-      dispatch(ActionCreator.loadTasks(adapter(response.data.data)))  
-    )
+    .then((response) => {      
+      dispatch(ActionCreator.loadTasks(adapter(response.data.data)));
+      dispatch(ActionCreator.setAddingTask(false));
+    })
     .catch((err)=>{
+      
       throw err;        
     });
   },
 
-  postTask: (title) => (dispatch, getState, api) => {
-    return api.post(`/list`,{title: title})
-      .then((res) => {
-        return res;
+  postTask: (id, title) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.setAddingTask(true));
+    return api.post(`/list`,{id: id, title: title})
+      .then((res) => {        
+        dispatch(ActionCreator.addTask(id, title));
+        dispatch(ActionCreator.setErrorPost(false));
+        dispatch(ActionCreator.setAddingTask(false));
       })
       .catch((err)=> {
+        dispatch(ActionCreator.setErrorPost(true));
         throw err;
       })
   },
 
   deleteTask: (id) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.setDeletingTask(true));
     return api.delete(`/list/${id}`)
       .then((res) => {
-        return res;
+        dispatch(ActionCreator.setDeletingTask(false));
       })
       .catch((err)=>{
+        dispatch(ActionCreator.setDeletingTask(false));  
         throw err;
       })
   },
 
-  editTask: (id, title) => (dispatch, getState, api) => {
-    
+  editTask: (id, title) => (dispatch, getState, api) => {  
+    dispatch(ActionCreator.setAddingTask(true));  
     return api.post(`/list/${id}`, {title: title})
       .then((response) => {  
         
+        dispatch(ActionCreator.editTask(id, title));
+        dispatch(ActionCreator.setAddingTask(false));
       })
       .catch((err)=>{
+        dispatch(ActionCreator.setAddingTask(false));  
         throw err;
       })
   },
@@ -94,8 +112,7 @@ export const ActionCreator = {
     payload: id,
   }),
 
-  editTask: (id, text) => {
-    
+  editTask: (id, text) => {    
     return ({
       type: ActionType.EDIT_TASK,
       payload: {
@@ -108,6 +125,22 @@ export const ActionCreator = {
     type: ActionType.IS_DATA_READY,
     payload: value,
   }),
+
+  setErrorPost: (value) => ({
+    type: ActionType.IS_ERROR_POST,
+    payload: value,
+  }),
+
+  setAddingTask: (value) => ({
+    type: ActionType.IS_ADDING_TASK,
+    payload: value,
+  }),
+
+  setDeletingTask: (value) => ({
+    type: ActionType.IS_DELETING_TASK,
+    payload: value,
+  }),
+
 };
 
 export const reducer = (state = initialState, action) => {  
@@ -121,20 +154,25 @@ export const reducer = (state = initialState, action) => {
       const tasks = state.data.filter((task) => task.id !== action.payload);
       return extend(state, {data: tasks});   
 
-    case ActionType.LOAD_TASKS:
+    case ActionType.LOAD_TASKS:      
       return extend(state, {data: [...state.data, ...action.payload]});
 
-    case ActionType.EDIT_TASK:
-      
+    case ActionType.EDIT_TASK:      
       const index = state.data.findIndex((task)=> task.id === action.payload.id);
-
       if (index === -1) {
         return false;
       }
-
       const newData = [].concat(state.data.slice(0, index), {id: action.payload.id, title: action.payload.text}, state.data.slice(index + 1));
-      
-      return extend(state, {data: newData});   
+        return extend(state, {data: newData});  
+        
+    case ActionType.IS_ERROR_POST:      
+      return extend(state, {isErrorPost: action.payload});
+
+    case ActionType.IS_ADDING_TASK:      
+      return extend(state, {isAdding: action.payload});
+
+    case ActionType.IS_DELETING_TASK:      
+      return extend(state, {isDeleting: action.payload});
             
     default :
       return state;  

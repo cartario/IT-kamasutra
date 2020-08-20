@@ -22,6 +22,10 @@ class TaskList extends React.Component{
     this._setActiveTask = this._setActiveTask.bind(this);
   }
 
+  componentDidMount(){
+    this.props.loadTasks();
+  }
+
   _setActiveTask(task){
     this.setState({
       activeTask: task,
@@ -47,7 +51,7 @@ class TaskList extends React.Component{
   }
 
   render(){
-    const {tasks, isDataReady} = this.props;	    
+    const {tasks, isDataReady, isErrorPost, isAdding, isDeleting} = this.props;	      
     let currentId;
     tasks.length ? currentId = tasks[tasks.length - 1].id + 1: currentId = 1;
     
@@ -62,6 +66,9 @@ class TaskList extends React.Component{
           >Добавить</button>
         </div>
         <div className = {s.tasks__container}>
+          {isErrorPost && <p className = {s.error}>Проверьте подключение интернета</p>}
+          {isAdding && <p style={{color: "green"}}>adding...</p>}
+          {isDeleting && <p style={{color: "grey"}}>deleting...</p>}
           {tasks.length ? ``: <p>Ура! Все задачи выполнены!!!!!!</p>}
           <ul className={s.tasks__list}>
             {tasks.map((task, i)=> <Task 
