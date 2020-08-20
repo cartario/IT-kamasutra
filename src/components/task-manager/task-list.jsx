@@ -67,8 +67,8 @@ class TaskList extends React.Component{
         </div>
         <div className = {s.tasks__container}>
           {isErrorPost && <p className = {s.error}>Проверьте подключение интернета</p>}
-          {isAdding && <p style={{color: "green"}}>adding...</p>}
-          {isDeleting && <p style={{color: "grey"}}>deleting...</p>}
+          {isAdding && <p className={`${s.status} ${s.status_adding}`}>loading...</p>}
+          {isDeleting && <p className={`${s.status} ${s.status_deleting}`}>deleting...</p>}
           {tasks.length ? ``: <p>Ура! Все задачи выполнены!!!!!!</p>}
           <ul className={s.tasks__list}>
             {tasks.map((task, i)=> <Task 

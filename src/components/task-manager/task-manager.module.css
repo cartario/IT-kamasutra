@@ -319,3 +319,24 @@
     color: white;
     border-radius: 15px;    
   }
+
+  .status {
+    position: absolute;
+    z-index: 2;
+    top: 40%;
+    left: 40%;
+    width: 300px;
+    padding: 30px;
+    text-align: center;    
+    color: white;
+    border-radius: 15px;
+    opacity: 0.7;
+  }
+
+  .status_adding {
+    background-color: green;
+  }
+
+  .status_deleting {
+    background-color: red;
+  }
