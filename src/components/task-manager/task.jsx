@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './task-manager.module.css';
-import {connect} from 'react-redux';
 
 class Task extends React.Component{
 
@@ -50,9 +49,7 @@ class Task extends React.Component{
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  
-})
 
-export {Task};
-export default connect(null, mapDispatchToProps)(Task);
+
+export default Task;
+

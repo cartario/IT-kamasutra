@@ -4,13 +4,13 @@ import CreateTask from './create-task.jsx';
 import Task from './task.jsx';
 import FullTask from './full-task.jsx';
 import DeleteTask from './delete-task.jsx';
+import withActiveTask from './withActiveTask.js';
 
 class TaskList extends React.Component{
   constructor(props){
     super(props);
 
-    this.state = {
-      activeTask: null,
+    this.state = {      
       isShowingCreate: false,
       isShowingFull: false,
       isShowingDelete: false,
@@ -18,19 +18,10 @@ class TaskList extends React.Component{
 
     this._toggleCreateHandler = this._toggleCreateHandler.bind(this);
     this._toggleFullHandler = this._toggleFullHandler.bind(this);
-    this._toggleDeleteHandler = this._toggleDeleteHandler.bind(this);
-    this._setActiveTask = this._setActiveTask.bind(this);
+    this._toggleDeleteHandler = this._toggleDeleteHandler.bind(this);    
   }
 
-  componentDidMount(){
-    this.props.loadTasks();
-  }
-
-  _setActiveTask(task){
-    this.setState({
-      activeTask: task,
-    })
-  }
+ 
 
   _toggleCreateHandler(){
     this.setState({
@@ -74,7 +65,7 @@ class TaskList extends React.Component{
             {tasks.map((task, i)=> <Task 
             key={task.id} 
             id={task.id} title={task.title}
-            setActiveTask = {this._setActiveTask}
+            setActiveTask = {this.props.setActiveTask}
             isShowingCreate = {this.state.isShowingCreate}
             isShowingFull = {this.state.isShowingFull}
             isShowingDelete = {this.state.isShowingDelete}
@@ -85,11 +76,11 @@ class TaskList extends React.Component{
           </ul>
         </div>
         {this.state.isShowingCreate && <CreateTask currentId = {currentId} toggleClickHandler = {this._toggleCreateHandler}/>}
-        {this.state.isShowingFull && <FullTask activeTask = {this.state.activeTask} toggleFullHandler = {this._toggleFullHandler}/>}
-        {this.state.isShowingDelete && <DeleteTask activeTask = {this.state.activeTask} toggleDeleteHandler = {this._toggleDeleteHandler}/>}
+        {this.state.isShowingFull && <FullTask activeTask = {this.props.activeTask} toggleFullHandler = {this._toggleFullHandler}/>}
+        {this.state.isShowingDelete && <DeleteTask activeTask = {this.props.activeTask} toggleDeleteHandler = {this._toggleDeleteHandler}/>}
       </section>		
     );
   }
 }
 
-export default TaskList;
+export default withActiveTask(TaskList);

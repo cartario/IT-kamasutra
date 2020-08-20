@@ -83,7 +83,6 @@ class CreateTask extends React.Component {
 	}
 };
 
-
 const mapDispatchToProps = (dispatch) => ({
 	addTask (id, text) {		
 		dispatch(Operation.postTask(id, text));
