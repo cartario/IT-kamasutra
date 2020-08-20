@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, BrowserRouter, HashRouter} from 'react-router-dom';
+import {Route, HashRouter} from 'react-router-dom';
 import './App.css';
 import Header from '../header/header.jsx';
 import Nav from '../nav/nav.jsx';

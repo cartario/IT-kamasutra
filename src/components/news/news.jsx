@@ -5,7 +5,7 @@ function News(){
 	return (		
 		<div className={s.container}>
 			<h1>News</h1>
-			<span>тебя зовут</span>
+			<span>News...</span>
 		</div>	
 	);
 }

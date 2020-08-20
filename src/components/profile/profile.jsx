@@ -2,7 +2,6 @@ import React from 'react';
 import s from './profile.module.css';
 import ProfileInfo from './profile-info/profile-info.jsx';
 import Posts from './posts/posts.jsx';
-import { store } from '../../redux-store';
 
 function Profile(props) {	
 	const profileInfoPage = props.store.getState().profilePage.profileInfo;

@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './new-post.module.css';
-import {addPostAC, updatePostAC} from '../../../../reducers/profile-reducer.js';
 import Post from '../post/post.jsx';
 
 const NewPost =(props)=> {

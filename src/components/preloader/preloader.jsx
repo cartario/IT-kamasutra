@@ -8,7 +8,7 @@ const Preloaders = {
 const Preloader = () => {
   return (    
       <div>
-        <img width="50" src={Preloaders.A}/>
+        <img width="50" src={Preloaders.A} alt="preloader"/>
       </div>    
   )
 };

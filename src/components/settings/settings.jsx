@@ -5,7 +5,7 @@ function Settings(){
 	return (		
 		<div className={s.container}>
 			<h1>Settings</h1>
-			<span>ПЁСИК</span>
+			<span>Settings...</span>
 		</div>	
 	);
 }

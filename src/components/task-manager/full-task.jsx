@@ -45,7 +45,7 @@ class FullTask extends React.Component{
 
 	render(){
 		const {activeTask} = this.props;
-		const {id, title} = activeTask;
+		const {id} = activeTask;
 		return (
 			<section className={s.full_task} onKeyDown={this._escHandler}>
 				<div className={s.full_task__container}>

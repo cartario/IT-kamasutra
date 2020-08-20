@@ -6,11 +6,7 @@ import {setIsFetchingAC} from '../../reducers/users-reducer.js';
 import Preloader from '../preloader/preloader.jsx';
 
 class Users extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
+  
   componentDidMount(){
     this.props.setFetching(true);
 
@@ -79,7 +75,7 @@ class Users extends React.Component {
       
       <li className = {s.item} key={user.userName}>
 
-        <img className = {s.photo} src={user.photoUrl} />
+        <img className = {s.photo} src={user.photoUrl} alt="userPhoto"/>
         <p> Name:   
           <span className = {s.blueTheme}>{user.userName}</span>
         </p>

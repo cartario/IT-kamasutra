@@ -8,7 +8,7 @@ const Sidebar = (props) => {
 
   const handlerClick = (e) => {
     const name = e.target.innerHTML
-    if(e.target.tagName=='A'){      
+    if(e.target.tagName === 'A'){      
       dispatch(clickFriendAC(name));
     }    
   }
@@ -18,7 +18,7 @@ const Sidebar = (props) => {
       <h2 className={s.title}>Friends</h2>
       <ul className={s.list}>
         {friends.map((friend)=> <li onClick={handlerClick} key={friend.name}>
-        <img className={s.avatar} src={`https://area-77.com/cliparts/sites/default/files/yellow-square-cliparts-143399-8182782.png`}/>
+        <img className={s.avatar} src={friend.src} alt="avatar"/>
         <NavLink className={s.link} to='#'>{friend.name}</NavLink>
         </li>)}
       </ul>	

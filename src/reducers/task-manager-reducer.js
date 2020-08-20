@@ -1,5 +1,4 @@
 import {extend} from "../utils.js";
-import TaskList from "../components/task-manager/task-list.jsx";
 
 const ActionType = {
   LOAD_TASKS: `LOAD_TASKS`,

@@ -5,7 +5,7 @@ function Music(){
 	return (		
 		<div className={s.container}>
 			<h1>Music</h1>
-			<span>Говорят</span>
+			<span>Music...</span>
 		</div>	
 	);
 }

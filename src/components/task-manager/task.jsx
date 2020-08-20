@@ -1,12 +1,8 @@
 import React from 'react';
 import s from './task-manager.module.css';
-import { connect } from 'react-redux';
-import {ActionCreator} from '../../reducers/task-manager-reducer.js';
+import {connect} from 'react-redux';
 
 class Task extends React.Component{
-  constructor(props){
-    super(props);
-  }
 
   _removeClickHandler() {    
     this.props.toggleDeleteHandler();
@@ -26,11 +22,9 @@ class Task extends React.Component{
   }
 
   render(){
-    const {id, title, isShowingCreate, isShowingFull, isShowingDelete, isDataReady} = this.props;
-    
+    const {id, title, isShowingCreate, isShowingFull, isShowingDelete} = this.props;    
     return (
-      <>
-      
+      <>      
         <li className={`${s.tasks__item} ${s.item}`}>
         <span className={s.item__name}>Задача №{id}</span>
         <span className={s.item__description}>{title}</span>
