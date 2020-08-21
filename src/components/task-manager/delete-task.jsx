@@ -3,6 +3,7 @@ import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {Operation, ActionCreator} from '../../reducers/task-manager-reducer.js';
+import {Toggles} from './name-space.js';
 
 class DeleteTask extends React.Component{
 	constructor(props){
@@ -14,14 +15,14 @@ class DeleteTask extends React.Component{
 
 	_escHandler(e){
 		if (e.keyCode === 27) {			
-			this.props.toggleDeleteHandler();
+			this.props.toggleHandler(Toggles.DELETE);
 		}
 		return null;
   }
     
   _deleteClickHandler(){
     this.props.removeTask(this.props.activeTask.id);
-    this.props.toggleDeleteHandler();
+    this.props.toggleHandler(Toggles.DELETE);
   }
 
 	render(){
@@ -40,7 +41,7 @@ class DeleteTask extends React.Component{
 						<NavLink onClick={this._deleteClickHandler} to="/taskmanager" className={`${s.button} ${s.button__delete}`}>
 							Удалить
 						</NavLink>
-            <button onClick={()=>{this.props.toggleDeleteHandler()}} className={s.new_task__button_close}></button>
+            <button onClick={()=>{this.props.toggleHandler(Toggles.DELETE)}} className={s.new_task__button_close}></button>
 					</div>				
 				</div>
 			</section>

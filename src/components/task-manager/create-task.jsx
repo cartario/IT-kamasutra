@@ -1,10 +1,8 @@
 import React from 'react';
 import s from './task-manager.module.css';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {Operation} from '../../reducers/task-manager-reducer.js';
-
-
-const MIN_REQUIRED_LETTERS_FOR_SAFE = 5;
+import {Toggles} from './name-space.js';
 
 class CreateTask extends React.Component {
 	constructor(props) {
@@ -34,12 +32,12 @@ class CreateTask extends React.Component {
 			this.setState({
 				text: '',
 			});
-			this.props.toggleClickHandler();
+			this.props.toggleHandler(Toggles.CREATE);
 		}
 	}
 
 	_closeTaskClickHandler(){
-		this.props.toggleClickHandler();
+		this.props.toggleHandler(Toggles.CREATE);
 	}
 
 	_changeHandler(e){
@@ -50,8 +48,8 @@ class CreateTask extends React.Component {
 	}
 
 	_escHandler(e){
-		if (e.keyCode === 27 && this.state.text.length < MIN_REQUIRED_LETTERS_FOR_SAFE) {			
-			this.props.toggleClickHandler();
+		if (e.keyCode === 27) {			
+			this.props.toggleHandler(Toggles.CREATE);
 		}
 		return null;
 	}

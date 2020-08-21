@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {setFocusEnd} from '../../utils';
 import {Operation, ActionCreator} from '../../reducers/task-manager-reducer.js';
+import {Toggles} from './name-space.js'
 
 class FullTask extends React.Component{
 	constructor(props){
@@ -21,7 +22,7 @@ class FullTask extends React.Component{
 
 	_escHandler(e){
 		if (e.keyCode === 27) {			
-			this.props.toggleFullHandler();
+			this.props.toggleHandler(Toggles.EDIT);
 		}
 		return null;
 	}
@@ -34,8 +35,7 @@ class FullTask extends React.Component{
 
 	_backClickHandler(){		
 		this.props.editTask(this.props.activeTask.id, this.state.text);
-		this.props.toggleFullHandler();
-		
+		this.props.toggleHandler(Toggles.EDIT);		
 	}
 
 	componentDidMount(){

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Toggles} from './name-space.js';
 
 const withToggle = (Component) => {
   class WithToggle extends React.Component{
@@ -6,33 +7,11 @@ const withToggle = (Component) => {
       super(props);
 
       this.state = {
-        isShowingCreate: false,
-        isShowingFull: false,
-        isShowingDelete: false,
-      };
-
-      this._toggleCreateHandler = this._toggleCreateHandler.bind(this);
-      this._toggleFullHandler = this._toggleFullHandler.bind(this);
-      this._toggleDeleteHandler = this._toggleDeleteHandler.bind(this);
+        [Toggles.CREATE]: false,
+        [Toggles.EDIT]: false,
+        [Toggles.DELETE]: false,
+      };      
       this._toggleHandler = this._toggleHandler.bind(this);    
-    }
-
-    _toggleCreateHandler(){
-      this.setState({
-        isShowingCreate: !this.state.isShowingCreate,
-      })
-    }
-
-    _toggleFullHandler(){
-      this.setState({
-        isShowingFull: !this.state.isShowingFull,
-      })
-    }
-  
-    _toggleDeleteHandler(){
-      this.setState({
-        isShowingDelete: !this.state.isShowingDelete,
-      })
     }
 
     _toggleHandler(name){
@@ -41,19 +20,14 @@ const withToggle = (Component) => {
       })
     }
 
-
     render(){
       return <Component 
         {...this.props}
-        statusCard = {this.state}  
-        toggleCreateHandler = {this._toggleCreateHandler}
-        toggleFullHandler = {this._toggleFullHandler}
-        toggleDeleteHandler = {this._toggleDeleteHandler}
+        statusCard = {this.state}       
         toggleHandler = {this._toggleHandler}
       />
     }
   };
-
   return WithToggle;
 };
 

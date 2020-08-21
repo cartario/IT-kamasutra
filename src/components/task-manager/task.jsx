@@ -1,10 +1,11 @@
 import React from 'react';
 import s from './task-manager.module.css';
+import {Toggles} from './name-space.js';
 
 class Task extends React.Component{
 
   _removeClickHandler() {    
-    this.props.toggleDeleteHandler();
+    this.props.toggleHandler(Toggles.DELETE);
 
     this.props.setActiveTask(
       {id: this.props.id,
@@ -13,7 +14,7 @@ class Task extends React.Component{
   }
 
   _editClickHandler() {
-    this.props.toggleFullHandler();    
+    this.props.toggleHandler(Toggles.EDIT);    
     this.props.setActiveTask(
       {id: this.props.id,
         title: this.props.title,      
@@ -50,7 +51,4 @@ class Task extends React.Component{
   }
 }
 
-
-
 export default Task;
-
