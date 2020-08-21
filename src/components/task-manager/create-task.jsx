@@ -3,12 +3,12 @@ import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {Operation} from './task-manager-reducer.js';
 import {Toggles} from './name-space.js';
-import withEdit from './withEdit';
+import withSubmit from './withSubmit';
 
 class CreateTask extends React.Component {
 	constructor(props) {
 		super(props);
-
+debugger;
 		this.state = {
 			id: 1,
 			text: ``,
@@ -90,4 +90,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export {CreateTask};
-export default connect(null, mapDispatchToProps)(CreateTask);
+export default connect(null, mapDispatchToProps)(withSubmit(CreateTask));

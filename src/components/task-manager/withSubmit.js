@@ -1,10 +1,10 @@
 import React from 'react';
 
-const withEdit = (Component) => {
-  class WithEdit extends React.Component{
+const withSubmit = (Component) => {
+  class WithSubmit extends React.Component{
     constructor(props){
       super(props);
-debugger;
+
       this.state = {
         
       };      
@@ -20,7 +20,7 @@ debugger;
       />
     }
   };
-  return WithEdit;
+  return WithSubmit;
 };
 
-export default withEdit;
+export default withSubmit;
