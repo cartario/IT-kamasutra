@@ -1,4 +1,4 @@
-import {extend} from "./utils.js";
+import {extend} from "../utils.js";
 
 const ActionType = {
   LOAD_TASKS: `LOAD_TASKS`,

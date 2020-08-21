@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import s from './task-manager.module.css';
-import {Toggles} from './name-space.js';
+import s from '../style/task-manager.module.css';
+import {Toggles} from '../name-space.js';
 
 const Task = (props)=> {
   const {task, isDisabled, toggleHandler, setActiveTask} = props;  

@@ -67,11 +67,11 @@
 }
 
 .item__link__edit {
-  background: url("../../pic/Vector.png") no-repeat;
+  background: url("../../../pic/Vector.png") no-repeat;
 }
 
 .item__link__delete {
-  background: url("../../pic/Vector-2.png") no-repeat;
+  background: url("../../../pic/Vector-2.png") no-repeat;
 }
 
 .header__title {
@@ -145,7 +145,7 @@
   right: 0;
   width: 14px;
   height: 14px;
-  background: url("../../pic/close-btn.png") no-repeat;
+  background: url("../../../pic/close-btn.png") no-repeat;
   border: none;
 }
 

@@ -3,7 +3,7 @@ import {messageReducer} from './reducers/message-reducer.js';
 import {profileReducer} from './reducers/profile-reducer.js';
 import {sidebarReducer} from './reducers/sidebar-reducer.js';
 import { usersReducer } from './reducers/users-reducer.js';
-import {reducer as taskManagerReducer} from './components/task-manager/task-manager-reducer.js';
+import {reducer as taskManagerReducer} from './components/task-manager/reducer/task-manager-reducer.js';
 
 import {compose, applyMiddleware} from "redux";
 import thunkMiddleware from "redux-thunk";

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import s from './task-manager.module.css';
+import s from '../style/task-manager.module.css';
 import {connect} from 'react-redux';
-import {Operation} from './task-manager-reducer.js';
-import {Toggles} from './name-space.js';
-import withSubmit from './withSubmit';
+import {Operation} from '../reducer/task-manager-reducer.js';
+import {Toggles} from '../name-space.js';
+import withSubmit from '../hocs/withSubmit';
 
 const CreateTask = (props) => {
 	const {toggleHandler, submitHandler, changeHandler, isErr, text} = props;

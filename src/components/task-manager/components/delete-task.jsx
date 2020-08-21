@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import s from './task-manager.module.css';
+import s from '../style/task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
-import {Operation, ActionCreator} from './task-manager-reducer.js';
-import {Toggles} from './name-space.js';
+import {Operation, ActionCreator} from '../reducer/task-manager-reducer.js';
+import {Toggles} from '../name-space.js';
 
 const DeleteTask = (props) => {
 	const {activeTask, removeTask, toggleHandler} = props;

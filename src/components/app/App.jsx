@@ -9,7 +9,7 @@ import Music from '../music/music.jsx';
 import News from '../news/news.jsx';
 import UsersContainer from '../users/users-container.jsx';
 import Settings from '../settings/settings.jsx';
-import TaskManager from '../task-manager/task-manager.jsx';
+import TaskManager from '../task-manager/components/task-manager.jsx';
 
 
 function App(props) {

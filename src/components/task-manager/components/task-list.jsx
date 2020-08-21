@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import s from './task-manager.module.css';
+import s from '../style/task-manager.module.css';
 import CreateTask from './create-task.jsx';
 import Task from './task.jsx';
 import FullTask from './full-task.jsx';
 import DeleteTask from './delete-task.jsx';
-import withActiveTask from './withActiveTask.js';
-import withToggle from './withToggle.js';
-import {Toggles} from './name-space.js';
+import withActiveTask from '../hocs/withActiveTask.js';
+import withToggle from '../hocs/withToggle.js';
+import {Toggles} from '../name-space.js';
 
 const TaskList = (props) => {
   const {tasks, activeTask, isErrorPost, isAdding, isDeleting, statusCard,

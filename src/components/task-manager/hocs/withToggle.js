@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {Toggles} from './name-space.js';
+import {Toggles} from '../name-space.js';
 
 const withToggle = (Component) => {
   class WithToggle extends React.Component{
