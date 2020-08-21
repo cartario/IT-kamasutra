@@ -4,12 +4,11 @@ import TaskList from './task-list.jsx';
 import {Operation} from '../../reducers/task-manager-reducer.js';
 
 const TaskManager = (props) => {
-	const {tasks, isDataReady, loadTasks, isErrorPost, isAdding, isDeleting} = props;	
+	const {tasks, loadTasks, isErrorPost, isAdding, isDeleting} = props;	
 	
 	return (	
 		<TaskList 
-		tasks = {tasks} 
-		isDataReady = {isDataReady}
+		tasks = {tasks}		
 		loadTasks = {loadTasks}	
 		isErrorPost = {isErrorPost}
 		isAdding = {isAdding}
@@ -19,7 +18,6 @@ const TaskManager = (props) => {
 };
 
 const mapStateToProps = (state) => ({	
-	isDataReady: state.taskManagerPage.isDataReady,
 	isErrorPost: state.taskManagerPage.isErrorPost,
 	tasks: state.taskManagerPage.data,
 	isAdding: state.taskManagerPage.isAdding,

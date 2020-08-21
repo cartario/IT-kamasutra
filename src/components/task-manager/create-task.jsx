@@ -23,7 +23,7 @@ class CreateTask extends React.Component {
 	_submitHandler(e){
 		e.preventDefault();
 
-		if(this.state.text.length === 0){
+		if(!this.state.text){
 			this.setState({
 				isErr: true,
 			})
