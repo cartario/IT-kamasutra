@@ -31,8 +31,8 @@ const TaskList = (props) => {
         {tasks.length ? ``: <p>Ура! Все задачи выполнены!!!!!!</p>}
         <ul className={s.tasks__list}>
           {tasks.map((task)=> <Task 
-          key={task.id} 
-          id={task.id} title={task.title}            
+          key={task.id}          
+          task={task}           
           setActiveTask = {setActiveTask}
           isDisabled = {isDisabled}          
           toggleHandler = {toggleHandler}            
