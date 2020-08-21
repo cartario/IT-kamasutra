@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
@@ -49,6 +50,15 @@ const mapDispatchToProps = (dispatch) => ({
 		dispatch(Operation.deleteTask(id));
   },
 });
+
+DeleteTask.propTypes = {  
+	activeTask: PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		title: PropTypes.string.isRequired,
+	}).isRequired,
+	removeTask: PropTypes.func.isRequired,
+	toggleHandler: PropTypes.func.isRequired,	
+};
 
 export {DeleteTask};
 export default connect(null, mapDispatchToProps)(DeleteTask);

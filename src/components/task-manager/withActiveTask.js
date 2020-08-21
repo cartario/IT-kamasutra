@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const withActiveTask = (Component) => {
   class WithActiveTask extends React.Component{
@@ -29,6 +30,19 @@ const withActiveTask = (Component) => {
       />
     }
   }
+
+  WithActiveTask.propTypes = {
+    tasks: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+      })
+    ).isRequired, 
+    loadTasks: PropTypes.func.isRequired,
+    isErrorPost: PropTypes.bool.isRequired,
+    isAdding: PropTypes.bool.isRequired,
+    isDeleting: PropTypes.bool.isRequired,
+  };
 
   return WithActiveTask;
 };

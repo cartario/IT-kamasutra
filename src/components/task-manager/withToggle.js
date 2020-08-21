@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {Toggles} from './name-space.js';
 
 const withToggle = (Component) => {
@@ -28,6 +29,25 @@ const withToggle = (Component) => {
       />
     }
   };
+
+  WithToggle.propTypes = {
+    tasks: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    activeTask: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    }),
+    loadTasks: PropTypes.func.isRequired,
+    setActiveTask: PropTypes.func.isRequired,
+    isErrorPost: PropTypes.bool.isRequired,
+    isAdding: PropTypes.bool.isRequired,
+    isDeleting: PropTypes.bool.isRequired,
+  };
+  
   return WithToggle;
 };
 

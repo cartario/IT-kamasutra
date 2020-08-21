@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {Toggles} from './name-space.js';
 
 const withSubmit = (Component) => {
@@ -49,6 +50,12 @@ const withSubmit = (Component) => {
       />
     }
   };
+
+  WithSubmit.propTypes = {
+    addTask: PropTypes.func.isRequired,
+    toggleHandler: PropTypes.func.isRequired,
+  };
+
   return WithSubmit;
 };
 

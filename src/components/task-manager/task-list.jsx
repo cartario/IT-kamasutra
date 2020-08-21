@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import s from './task-manager.module.css';
 import CreateTask from './create-task.jsx';
 import Task from './task.jsx';
@@ -43,6 +44,30 @@ const TaskList = (props) => {
       {statusCard[Toggles.EDIT] && <FullTask activeTask = {activeTask} toggleHandler = {toggleHandler}/>}
       {statusCard[Toggles.DELETE] && <DeleteTask activeTask = {activeTask} toggleHandler = {toggleHandler}/>}
     </section>)
+};
+
+TaskList.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired, 
+	activeTask: PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		title: PropTypes.string.isRequired,
+  }),
+  statusCard: PropTypes.shape({
+    isShowingCreate: PropTypes.bool.isRequired,
+    isShowingFull: PropTypes.bool.isRequired,
+    isShowingDelete: PropTypes.bool.isRequired,
+  }),
+	setActiveTask: PropTypes.func.isRequired,
+  toggleHandler: PropTypes.func.isRequired,
+  loadTasks: PropTypes.func.isRequired,
+  isAdding: PropTypes.bool.isRequired,
+  isDeleting: PropTypes.bool.isRequired,	
+  isErrorPost: PropTypes.bool.isRequired,	
 };
 
 export default withActiveTask(withToggle(TaskList));

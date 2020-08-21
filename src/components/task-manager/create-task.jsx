@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {Operation} from './task-manager-reducer.js';
@@ -7,7 +8,7 @@ import withSubmit from './withSubmit';
 
 const CreateTask = (props) => {
 	const {toggleHandler, submitHandler, changeHandler, isErr, text} = props;
-
+	
 	const closeTaskClickHandler = () => {
 		toggleHandler(Toggles.CREATE);
 	}
@@ -50,6 +51,15 @@ const mapDispatchToProps = (dispatch) => ({
 		dispatch(Operation.postTask(text));
   },  
 })
+
+CreateTask.propTypes = {  
+	addTask: PropTypes.func.isRequired,
+	changeHandler: PropTypes.func.isRequired,
+	toggleHandler: PropTypes.func.isRequired,
+	submitHandler: PropTypes.func.isRequired,
+	isErr: PropTypes.bool.isRequired,
+	text: PropTypes.string.isRequired,
+};
 
 export {CreateTask};
 export default connect(null, mapDispatchToProps)(withSubmit(CreateTask));

@@ -1,4 +1,5 @@
 import React, {createRef} from 'react';
+import PropTypes from "prop-types";
 import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
@@ -76,6 +77,15 @@ const mapDispatchToProps = (dispatch) => ({
 		dispatch(Operation.editTask(id, text));		
 	},
 });
+
+FullTask.propTypes = {  
+	activeTask: PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		title: PropTypes.string.isRequired,
+	}).isRequired,
+	editTask: PropTypes.func.isRequired,
+	toggleHandler: PropTypes.func.isRequired,	
+};
 
 export {FullTask};
 export default connect(null, mapDispatchToProps)(FullTask);

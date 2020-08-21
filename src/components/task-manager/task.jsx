@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import s from './task-manager.module.css';
 import {Toggles} from './name-space.js';
 
@@ -45,6 +46,16 @@ const Task = (props)=> {
       </li>			
     </>
     );
+};
+
+Task.propTypes = {  
+	task: PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		title: PropTypes.string.isRequired,
+	}).isRequired,
+	setActiveTask: PropTypes.func.isRequired,
+  toggleHandler: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool.isRequired,	
 };
 
 export default Task;
