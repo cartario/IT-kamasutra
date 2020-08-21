@@ -40,10 +40,7 @@ class TaskList extends React.Component{
   }
 
   render(){
-    const {tasks, isErrorPost, isAdding, isDeleting} = this.props;	      
-    let currentId;
-    tasks.length ? currentId = tasks[tasks.length - 1].id + 1: currentId = 1;
-
+    const {tasks, isErrorPost, isAdding, isDeleting} = this.props;    
     const isDisabled = (this.state.isShowingCreate || this.state.isShowingFull || this.state.isShowingDelete);
     
     return (
@@ -62,7 +59,7 @@ class TaskList extends React.Component{
           {isDeleting && <p className={`${s.status} ${s.status_deleting}`}>deleting...</p>}
           {tasks.length ? ``: <p>Ура! Все задачи выполнены!!!!!!</p>}
           <ul className={s.tasks__list}>
-            {tasks.map((task, i)=> <Task 
+            {tasks.map((task)=> <Task 
             key={task.id} 
             id={task.id} title={task.title}            
             setActiveTask = {this.props.setActiveTask}
@@ -72,7 +69,7 @@ class TaskList extends React.Component{
             />)}
           </ul>
         </div>
-        {this.state.isShowingCreate && <CreateTask currentId = {currentId} toggleClickHandler = {this._toggleCreateHandler}/>}
+        {this.state.isShowingCreate && <CreateTask toggleClickHandler = {this._toggleCreateHandler}/>}
         {this.state.isShowingFull && <FullTask activeTask = {this.props.activeTask} toggleFullHandler = {this._toggleFullHandler}/>}
         {this.state.isShowingDelete && <DeleteTask activeTask = {this.props.activeTask} toggleDeleteHandler = {this._toggleDeleteHandler}/>}
       </section>		

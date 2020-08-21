@@ -29,7 +29,7 @@ class CreateTask extends React.Component {
 				isErr: true,
 			})
 		} else {			
-			this.props.addTask(this.props.currentId, this.state.text);
+			this.props.addTask(this.state.text);
 			this.setState({
 				text: '',
 			});
@@ -84,8 +84,8 @@ class CreateTask extends React.Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	addTask (id, text) {		
-		dispatch(Operation.postTask(id, text));
+	addTask (text) {		
+		dispatch(Operation.postTask(text));
   },  
 })
 

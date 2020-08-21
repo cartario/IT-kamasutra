@@ -18,6 +18,7 @@ const adapter = (data) => {
       title: `Что-то пошло не так! Возможно сервер недоступен`
     }]
   } else {    
+    
     return data;
   }  
 };
@@ -51,11 +52,11 @@ export const Operation = {
     });
   },
 
-  postTask: (id, title) => (dispatch, getState, api) => {
+  postTask: (title) => (dispatch, getState, api) => {
     dispatch(ActionCreator.setAddingTask(true));
-    return api.post(`/list`,{id: id, title: title})
-      .then((res) => {        
-        dispatch(ActionCreator.addTask(id, title));
+    return api.post(`/list`,{title: title})
+      .then((res) => { 
+        dispatch(ActionCreator.addTask(res.data.id, title));        
         dispatch(ActionCreator.setErrorPost(false));
         dispatch(ActionCreator.setAddingTask(false));
       })
@@ -151,7 +152,7 @@ export const ActionCreator = {
 export const reducer = (state = initialState, action) => {  
   switch (action.type) {    
     case ActionType.ADD_TASK:      
-      const newTask = {id: action.payload.id, title: action.payload.text};
+      const newTask = {id: action.payload.id ,title: action.payload.text};
 
       return extend(state, {data: [...state.data, newTask]});
       
