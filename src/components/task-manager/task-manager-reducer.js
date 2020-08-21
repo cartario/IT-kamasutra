@@ -104,12 +104,12 @@ export const ActionCreator = {
     payload: tasks,
   }),
 
-  addTask: (id, text) => {
+  addTask: (id, title) => {
     return ({
       type: ActionType.ADD_TASK,
       payload: {
         id: id,
-        text: text},
+        title: title},
     })
   },
 
@@ -118,12 +118,12 @@ export const ActionCreator = {
     payload: id,
   }),
 
-  editTask: (id, text) => {    
+  editTask: (id, title) => {    
     return ({
       type: ActionType.EDIT_TASK,
       payload: {
         id: id,
-        text: text},
+        title: title},
     })
   },
 
@@ -151,10 +151,8 @@ export const ActionCreator = {
 
 export const reducer = (state = initialState, action) => {  
   switch (action.type) {    
-    case ActionType.ADD_TASK:      
-      const newTask = {id: action.payload.id ,title: action.payload.text};
-
-      return extend(state, {data: [...state.data, newTask]});
+    case ActionType.ADD_TASK:
+      return extend(state, {data: [...state.data, action.payload]});
       
     case ActionType.REMOVE_TASK:      
       const tasks = state.data.filter((task) => task.id !== action.payload);
@@ -168,7 +166,7 @@ export const reducer = (state = initialState, action) => {
       if (index === -1) {
         return false;
       }
-      const newData = [].concat(state.data.slice(0, index), {id: action.payload.id, title: action.payload.text}, state.data.slice(index + 1));
+      const newData = [].concat(state.data.slice(0, index), action.payload, state.data.slice(index + 1));
         return extend(state, {data: newData});  
         
     case ActionType.IS_ERROR_POST:      
