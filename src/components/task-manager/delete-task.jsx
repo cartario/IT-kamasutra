@@ -2,7 +2,7 @@ import React from 'react';
 import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
-import {Operation, ActionCreator} from '../../reducers/task-manager-reducer.js';
+import {Operation, ActionCreator} from './task-manager-reducer.js';
 import {Toggles} from './name-space.js';
 
 const DeleteTask = (props) => {

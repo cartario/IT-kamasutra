@@ -2,8 +2,8 @@ import React, {createRef} from 'react';
 import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
-import {setFocusEnd} from '../../utils';
-import {Operation, ActionCreator} from '../../reducers/task-manager-reducer.js';
+import {setFocusEnd} from './utils';
+import {Operation, ActionCreator} from './task-manager-reducer.js';
 import {Toggles} from './name-space.js'
 
 class FullTask extends React.Component{

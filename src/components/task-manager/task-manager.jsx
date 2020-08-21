@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TaskList from './task-list.jsx';
-import {Operation} from '../../reducers/task-manager-reducer.js';
+import {Operation} from './task-manager-reducer.js';
 
 const TaskManager = (props) => {
 	const {tasks, loadTasks, isErrorPost, isAdding, isDeleting} = props;	

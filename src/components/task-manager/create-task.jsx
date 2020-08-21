@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './task-manager.module.css';
 import {connect} from 'react-redux';
-import {Operation} from '../../reducers/task-manager-reducer.js';
+import {Operation} from './task-manager-reducer.js';
 import {Toggles} from './name-space.js';
 
 class CreateTask extends React.Component {
