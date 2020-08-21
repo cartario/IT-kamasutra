@@ -3,6 +3,7 @@ import s from './task-manager.module.css';
 import {connect} from 'react-redux';
 import {Operation} from './task-manager-reducer.js';
 import {Toggles} from './name-space.js';
+import withEdit from './withEdit';
 
 class CreateTask extends React.Component {
 	constructor(props) {

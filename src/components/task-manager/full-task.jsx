@@ -45,11 +45,11 @@ class FullTask extends React.Component{
 
 	render(){
 		const {activeTask} = this.props;
-		const {id} = activeTask;
+		
 		return (
 			<section className={s.full_task} onKeyDown={this._escHandler}>
 				<div className={s.full_task__container}>
-					<h2>Задача #{id}</h2>
+					<h2>Задача #{activeTask.id}</h2>
 					<div >
 						<p className={s.full_task__label}>
 							Краткое описание
