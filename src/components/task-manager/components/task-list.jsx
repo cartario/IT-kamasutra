@@ -18,7 +18,7 @@ const TaskList = (props) => {
   return (
     <section className={`${s.taskmanager} ${s.tasks}`}>
       <div className={`${s.tasks__header} ${s.header}`}>
-        <h1 className={s.header__title}>Список задач</h1>
+        <h1 className={`${s.header__title} newClassName`}>Список задач</h1>
         <button 
           onClick={()=>{toggleHandler(Toggles.CREATE)}} 
           className= {`${s.header__button} ${s.button} ${s.button__add}`}

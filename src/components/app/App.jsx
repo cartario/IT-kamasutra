@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, HashRouter} from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import Header from '../header/header.jsx';
 import Nav from '../nav/nav.jsx';
 import Profile from '../profile/profile.jsx';
@@ -10,6 +10,7 @@ import News from '../news/news.jsx';
 import UsersContainer from '../users/users-container.jsx';
 import Settings from '../settings/settings.jsx';
 import TaskManager from '../task-manager/components/task-manager.jsx';
+import '../../sass/app.scss';
 
 
 function App(props) {
