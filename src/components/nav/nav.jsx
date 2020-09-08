@@ -31,6 +31,9 @@ const Nav = (props) => {
 				<li className = {s.item}>
 					<NavLink to ="/taskmanager" className = {s.link} activeClassName = {s.active}>TaskManager</NavLink>
 				</li>
+				<li className = {s.item}>
+					<NavLink to ="/express" className = {s.link} activeClassName = {s.active}>Express</NavLink>
+				</li>
 			</ul>
 			<Sidebar friends={sidebar.friends} dispatch={dispatch}/>			
 		</nav>

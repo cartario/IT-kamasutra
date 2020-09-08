@@ -10,6 +10,7 @@ import News from '../news/news.jsx';
 import UsersContainer from '../users/users-container.jsx';
 import Settings from '../settings/settings.jsx';
 import TaskManager from '../task-manager/components/task-manager.jsx';
+import Express from '../express/express.jsx';
 
 
 function App(props) {
@@ -27,6 +28,7 @@ function App(props) {
 					<Route path='/news' component={News}/>
 					<Route path='/settings' component={Settings}/>
 					<Route path='/taskmanager' component={TaskManager}/>
+					<Route path='/express' component={Express}/>
 				</div>
 			
 			</div>
